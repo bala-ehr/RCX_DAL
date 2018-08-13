@@ -1,0 +1,150 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <metadata name="sqlDataSource1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <data name="customSqlQuery1.Sql" xml:space="preserve">
+    <value>SELECT DISTINCT 
+                         TOP (100) PERCENT rc_scorecards_scores.score_col1 AS [Score Column 1], rc_scorecards_scores.score_colmeasure1 AS [Measure Column 1], rc_scorecards_scores.score_col2 AS [Score Column 2], 
+                         rc_scorecards_scores.score_colmeasure2 AS [Measure Columns 2 ], rc_scorecards_standards.stan_standard AS Standard, rc_scorecards_standards.stan_capabilityquality AS [Standard Capability Quality], 
+                         rc_scorestandard_values.value_score AS [Score #], rc_scorestandard_values.value_scoretext AS [Score Definition], rc_scorestandard_values.value_measures AS [ignore.0], rc_scorecards.card_name AS [Card Name], 
+                         rc_scorecards.card_measure AS [ignore.1], rc_scorecards.card_measure_notes AS [ignore.2], rc_scorecards.card_desc AS [ignore.3], rc_scorecards.card_col1 AS [Milestone 1 Label], rc_scorecards.card_measure1, 
+                         rc_scorecards.card_colenabled1, rc_scorecards.card_col2 AS [Milestone 2 Label], rc_scorecards.card_measure2, rc_assessment_processes.bp_name AS [Business Process Name], 
+                         rc_assessment_processes.bp_identifier AS [Business Process ID], rc_assessment_areas.area_name AS [area name for BA], rc_assessment_areas.area_identifier AS [area ID for BA], 
+                         rc_assessment_areas_1.area_name AS [area name for BP], rc_assessment_areas_1.area_identifier AS [area ID for BP], dbo.rc_projects.pro_name AS [Project Name], rc_scorecards_scores.score_itemid, 
+                         rc_assessment_areas.area_id, rc_assessment_processes.bp_id, rc_assessment_processes.bp_description, rc_assessment_areas.area_description, dbo.rc_projects.pro_ID
+FROM            dbo.rc_projects RIGHT OUTER JOIN
+                         dbo.rc_scorecards_scores AS rc_scorecards_scores INNER JOIN
+                         dbo.rc_scorecards_standards AS rc_scorecards_standards ON rc_scorecards_standards.stan_id = rc_scorecards_scores.score_standard INNER JOIN
+                         dbo.rc_scorestandard_values AS rc_scorestandard_values ON rc_scorestandard_values.value_standard = rc_scorecards_standards.stan_id INNER JOIN
+                         dbo.rc_scorecards AS rc_scorecards ON rc_scorecards.card_id = rc_scorecards_standards.stan_card ON dbo.rc_projects.pro_ID = rc_scorecards_scores.score_projectid LEFT OUTER JOIN
+                         dbo.rc_assessment_active INNER JOIN
+                         dbo.rc_assessment_processes AS rc_assessment_processes ON dbo.rc_assessment_active.act_bpID = rc_assessment_processes.bp_id ON 
+                         rc_scorecards_scores.score_itemid = rc_assessment_processes.bp_id LEFT OUTER JOIN
+                         dbo.rc_assessment_categories AS rc_assessment_categories ON rc_assessment_categories.cat_id = rc_assessment_processes.bp_bcID LEFT OUTER JOIN
+                         dbo.rc_assessment_areas AS rc_assessment_areas ON rc_assessment_areas.area_id = rc_scorecards_scores.score_itemid LEFT OUTER JOIN
+                         dbo.rc_assessment_areas AS rc_assessment_areas_1 ON rc_assessment_areas_1.area_id = rc_assessment_categories.cat_baID
+WHERE        (rc_scorecards.card_name &lt;&gt; N'Barbara BCM Test') AND (dbo.rc_projects.pro_name IS NOT NULL) AND (rc_scorecards.card_name &lt;&gt; N'TEST CM') AND (rc_scorecards.card_name &lt;&gt; N'ICM Scorecard')
+ORDER BY [Card Name]</value>
+  </data>
+  <data name="sqlDataSource1.ResultSchemaSerializable" xml:space="preserve">
+    <value>PERhdGFTZXQgTmFtZT0ic3FsRGF0YVNvdXJjZTEiPjxWaWV3IE5hbWU9ImJldHRlciBxdWVyeSI+PEZpZWxkIE5hbWU9IlNjb3JlIENvbHVtbiAxIiBUeXBlPSJJbnQzMiIgLz48RmllbGQgTmFtZT0iTWVhc3VyZSBDb2x1bW4gMSIgVHlwZT0iU3RyaW5nIiAvPjxGaWVsZCBOYW1lPSJTY29yZSBDb2x1bW4gMiIgVHlwZT0iSW50MzIiIC8+PEZpZWxkIE5hbWU9Ik1lYXN1cmUgQ29sdW1ucyAyICIgVHlwZT0iU3RyaW5nIiAvPjxGaWVsZCBOYW1lPSJTdGFuZGFyZCIgVHlwZT0iU3RyaW5nIiAvPjxGaWVsZCBOYW1lPSJTdGFuZGFyZCBDYXBhYmlsaXR5IFF1YWxpdHkiIFR5cGU9IlN0cmluZyIgLz48RmllbGQgTmFtZT0iU2NvcmUgIyIgVHlwZT0iSW50MzIiIC8+PEZpZWxkIE5hbWU9IlNjb3JlIERlZmluaXRpb24iIFR5cGU9IlN0cmluZyIgLz48RmllbGQgTmFtZT0iaWdub3JlLjAiIFR5cGU9IlN0cmluZyIgLz48RmllbGQgTmFtZT0iQ2FyZCBOYW1lIiBUeXBlPSJTdHJpbmciIC8+PEZpZWxkIE5hbWU9Imlnbm9yZS4xIiBUeXBlPSJCb29sZWFuIiAvPjxGaWVsZCBOYW1lPSJpZ25vcmUuMiIgVHlwZT0iU3RyaW5nIiAvPjxGaWVsZCBOYW1lPSJpZ25vcmUuMyIgVHlwZT0iU3RyaW5nIiAvPjxGaWVsZCBOYW1lPSJNaWxlc3RvbmUgMSBMYWJlbCIgVHlwZT0iU3RyaW5nIiAvPjxGaWVsZCBOYW1lPSJjYXJkX21lYXN1cmUxIiBUeXBlPSJTdHJpbmciIC8+PEZpZWxkIE5hbWU9ImNhcmRfY29sZW5hYmxlZDEiIFR5cGU9IkJvb2xlYW4iIC8+PEZpZWxkIE5hbWU9Ik1pbGVzdG9uZSAyIExhYmVsIiBUeXBlPSJTdHJpbmciIC8+PEZpZWxkIE5hbWU9ImNhcmRfbWVhc3VyZTIiIFR5cGU9IlN0cmluZyIgLz48RmllbGQgTmFtZT0iQnVzaW5lc3MgUHJvY2VzcyBOYW1lIiBUeXBlPSJTdHJpbmciIC8+PEZpZWxkIE5hbWU9IkJ1c2luZXNzIFByb2Nlc3MgSUQiIFR5cGU9IlN0cmluZyIgLz48RmllbGQgTmFtZT0iYXJlYSBuYW1lIGZvciBCQSIgVHlwZT0iU3RyaW5nIiAvPjxGaWVsZCBOYW1lPSJhcmVhIElEIGZvciBCQSIgVHlwZT0iU3RyaW5nIiAvPjxGaWVsZCBOYW1lPSJhcmVhIG5hbWUgZm9yIEJQIiBUeXBlPSJTdHJpbmciIC8+PEZpZWxkIE5hbWU9ImFyZWEgSUQgZm9yIEJQIiBUeXBlPSJTdHJpbmciIC8+PEZpZWxkIE5hbWU9IlByb2plY3QgTmFtZSIgVHlwZT0iU3RyaW5nIiAvPjxGaWVsZCBOYW1lPSJzY29yZV9pdGVtaWQiIFR5cGU9Ikd1aWQiIC8+PEZpZWxkIE5hbWU9ImFyZWFfaWQiIFR5cGU9Ikd1aWQiIC8+PEZpZWxkIE5hbWU9ImJwX2lkIiBUeXBlPSJHdWlkIiAvPjxGaWVsZCBOYW1lPSJicF9kZXNjcmlwdGlvbiIgVHlwZT0iU3RyaW5nIiAvPjxGaWVsZCBOYW1lPSJhcmVhX2Rlc2NyaXB0aW9uIiBUeXBlPSJTdHJpbmciIC8+PEZpZWxkIE5hbWU9InByb19JRCIgVHlwZT0iR3VpZCIgLz48L1ZpZXc+PC9EYXRhU2V0Pg==</value>
+  </data>
+</root>

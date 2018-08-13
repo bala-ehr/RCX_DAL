@@ -1,0 +1,43 @@
+.header {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 10px 20px;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.footer {
+  padding: 10px 20px;
+}
+
+.body {
+  padding: 10px 20px;
+}
+
+.paragraph {
+  font-style: italic;
+}
+
+.header_img {
+  width: 100px;
+}
+
+.div-block {
+  height: 10px;
+}
+
+.space {
+  height: 10px;
+}
+
+.space10 {
+  height: 10px;
+}

@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Dashboard CurrencyCulture="en-US">
+  <Title Text="Project Management" IncludeMasterFilterState="false" />
+  <DataSources>
+    <SqlDataSource ComponentName="dashboardSqlDataSource1">
+      <Name>SQL Data Source 1</Name>
+      <Connection Name="DevDB" FromAppConfig="true" />
+      <Query Type="CustomSqlQuery" Name="Query">
+        <Sql>SELECT [pm_id],[pm_type],[pm_uniqueID],[pm_area],[pm_title],[pm_desc],[pm_solution],[pm_priority],[pm_status],[pm_createdby],[pm_createddate],[pm_projectID],[pm_home], CASE [pm_home] WHEN 'E' THEN 'Enterprise' WHEN 'P' THEN 'Project' WHEN 'G' THEN 'Global' END [Home]
+  FROM [dbo].[rc_pm]</Sql>
+      </Query>
+      <ResultSchema>
+        <DataSet Name="SQL Data Source 1">
+          <View Name="Query">
+            <Field Name="pm_id" Type="Guid" />
+            <Field Name="pm_type" Type="String" />
+            <Field Name="pm_uniqueID" Type="String" />
+            <Field Name="pm_area" Type="String" />
+            <Field Name="pm_title" Type="String" />
+            <Field Name="pm_desc" Type="String" />
+            <Field Name="pm_solution" Type="String" />
+            <Field Name="pm_priority" Type="String" />
+            <Field Name="pm_status" Type="String" />
+            <Field Name="pm_createdby" Type="String" />
+            <Field Name="pm_createddate" Type="DateTime" />
+            <Field Name="pm_projectID" Type="Guid" />
+            <Field Name="pm_home" Type="String" />
+            <Field Name="Home" Type="String" />
+          </View>
+        </DataSet>
+      </ResultSchema>
+      <ConnectionOptions CloseConnection="true" />
+    </SqlDataSource>
+  </DataSources>
+  <Items>
+    <TreeView ComponentName="treeViewDashboardItem1" Name="Data selector" DataSource="dashboardSqlDataSource1" DataMember="Query">
+      <DataItems>
+        <Dimension DataMember="pm_type" SortOrder="Descending" DefaultId="DataItem0" />
+        <Dimension DataMember="Home" DefaultId="DataItem1" />
+        <Dimension DataMember="pm_status" DefaultId="DataItem2" />
+      </DataItems>
+      <FilterDimensions>
+        <Dimension DefaultId="DataItem1" />
+        <Dimension DefaultId="DataItem0" />
+        <Dimension DefaultId="DataItem2" />
+      </FilterDimensions>
+    </TreeView>
+    <Pivot ComponentName="pivotDashboardItem1" Name="Pivot 1" ShowCaption="false" DataSource="dashboardSqlDataSource1" DataMember="Query">
+      <DataItems>
+        <Measure DataMember="pm_createddate" ShowTotals="false" ShowGrandTotals="false" SummaryType="Max" DefaultId="DataItem1" />
+        <Dimension DataMember="pm_type" SortOrder="Descending" DefaultId="DataItem3" />
+        <Dimension DataMember="Home" DefaultId="DataItem0" />
+        <Dimension DataMember="pm_title" DefaultId="DataItem2" />
+      </DataItems>
+      <Columns>
+        <Column DefaultId="DataItem0" />
+        <Column DefaultId="DataItem2" />
+      </Columns>
+      <Rows>
+        <Row DefaultId="DataItem3" />
+      </Rows>
+      <Values>
+        <Value DefaultId="DataItem1" />
+      </Values>
+    </Pivot>
+    <Pie ComponentName="pieDashboardItem1" Name="Pies 1" ShowCaption="false" DataSource="dashboardSqlDataSource1" DataMember="Query">
+      <DataItems>
+        <Dimension DataMember="pm_type" DefaultId="DataItem1" />
+        <Measure DataMember="pm_createddate" SummaryType="Count" DefaultId="DataItem2" />
+        <Dimension DataMember="Home" DefaultId="DataItem0" />
+      </DataItems>
+      <SeriesDimensions>
+        <SeriesDimension DefaultId="DataItem0" />
+      </SeriesDimensions>
+      <Arguments>
+        <Argument DefaultId="DataItem1" />
+      </Arguments>
+      <Values>
+        <Value DefaultId="DataItem2" />
+      </Values>
+    </Pie>
+  </Items>
+  <LayoutTree>
+    <LayoutGroup>
+      <LayoutGroup Orientation="Vertical" Weight="86.927480916030532">
+        <LayoutItem DashboardItem="pivotDashboardItem1" Weight="49.939098660170522" />
+        <LayoutItem DashboardItem="pieDashboardItem1" Weight="25.091352009744213" />
+      </LayoutGroup>
+      <LayoutItem DashboardItem="treeViewDashboardItem1" Weight="13.072519083969466" />
+    </LayoutGroup>
+  </LayoutTree>
+</Dashboard>

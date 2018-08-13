@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Dashboard>
+  <Title Text="RTM" />
+  <DataSources>
+    <SqlDataSource ComponentName="DataSource1">
+      <Name>rc_rtm_checklists</Name>
+      <Connection Name="ReadyCert" FromAppConfig="true" />
+      <Query Type="SelectQuery" Name="rc_rtm_checklists">
+        <Tables>
+          <Table Name="rc_rtm_checklists" />
+          <Table Name="rc_rtm_objectives" />
+          <Table Name="rc_rtm_criteria" />
+          <Table Name="rc_responses" />
+          <Table Name="rc_milestones" />
+          <Relation Type="Inner" Parent="rc_rtm_objectives" Nested="rc_rtm_checklists">
+            <KeyColumn Parent="bo_checklist" Nested="ch_id" />
+          </Relation>
+          <Relation Type="Inner" Parent="rc_rtm_criteria" Nested="rc_rtm_objectives">
+            <KeyColumn Parent="src_objective" Nested="bo_id" />
+          </Relation>
+          <Relation Type="LeftOuter" Parent="rc_responses" Nested="rc_milestones">
+            <KeyColumn Parent="res_milestoneID" Nested="mil_id" />
+          </Relation>
+          <Relation Type="LeftOuter" Parent="rc_rtm_criteria" Nested="rc_responses">
+            <KeyColumn Parent="src_id" Nested="res_itemID" />
+          </Relation>
+        </Tables>
+        <Columns>
+          <Column Table="rc_rtm_criteria" Name="src_title" Alias="Criteria Name" />
+          <Column Table="rc_rtm_criteria" Name="src_unique_name" Alias="Criteria ID" />
+          <Column Table="rc_rtm_checklists" Name="ch_title" />
+          <Column Table="rc_rtm_objectives" Name="bo_unique_id" Alias="Objective ID" />
+          <Column Table="rc_rtm_objectives" Name="bo_name" />
+          <Column Table="rc_responses" Name="res_response" Alias="Response" />
+          <Column Table="rc_responses" Name="res_assessment" Alias="Assessemnt" />
+          <Column Table="rc_milestones" Name="mil_name" />
+        </Columns>
+        <Sorting>
+          <Column Table="rc_rtm_criteria" Name="src_unique_order" />
+        </Sorting>
+      </Query>
+      <ConnectionOptions CloseConnection="true" />
+    </SqlDataSource>
+  </DataSources>
+</Dashboard>

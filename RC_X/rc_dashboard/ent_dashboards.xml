@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Items>
+  <Item id="dash_ent_enterprise_planning" type="Enterprise Planning Dashboard" description="This shows projects by certification coverage with drill down to checklist level." RCparam="true"/>
+  <Item id="dash_ent_evaluator_summary" type="Enterprise Evaluator Summary" description="Shows counts for RTM Evaluations, by Evaluator, for Multiple Projects." RCparam="true"/>
+  <Item id="dash_pro_mmm_dashboard" type="MITA Multi Project Dashboard: Business Area Compare" description="MITA Maturity for each Business Area As-Is and To-Be Scores for multiple project compare" RCparam="true"/>
+  <item id="dash_pro_profile" type="MITA Multi Project Dashboard: Business Process Compare" description="Business processes Scores for multiple projects." RCparam="true"/>
+  <Item id="dash_ent_work_pivot" type="Workflow Pivot" description="A pivot table of all assigned workflow status for all users for all projects" RCparam="true"/>
+  <Item id="dash_ent_cross_score" type="Scorecard cross project data" description="Displays a trend in Maturity between multiple projects" RCparam="true"/>
+  <Item id="dash_ent_workflow" type="Workflow Dashboard" description="This dashboard will show you how many workflow items are assigned to users by project, and what they are." RCparam="true"/>
+  <Item id="dash_ent_rtm_eval" type="RTM Item Metric" description="Displays counts per checklist of evaluation response scores by project" />
+  <Item id="dash_ent_projectManagement" type="Project Management" description="Displays Project Management items by type" />
+  <Item id="dash_ent_scorecard_change" type="ScoreCard per Project" description="Displays item scorecard scores by Project in a pivot" />
+  <Item id="dash_pro_active_checklist" type="Active Checlists per Project" description="Displays active Checklists and count of SRC item and responses per project" />
+
+  <!--<Item id="dash_ent_enterprise_roadmap" type="Enterprise Roadmap" description="A Roadmap of projects with status and target dates" RCparam="true"/>
+  <Item id="dash_workflow" type="Workflow Dashboard" description="This is the workflow dashboard showing count of workflow items by due date (quarter) and other related data points" RCparam="true"/>
+  <Item id="dash_ent_compareProjectScores" type="Project Maturity Profile Scores Compare" description="Displays item scorecard scores by Project in a pivot to compare" />
+  
+  -->
+
+</Items>

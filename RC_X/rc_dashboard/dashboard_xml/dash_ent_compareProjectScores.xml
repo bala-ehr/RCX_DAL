@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Dashboard CurrencyCulture="en-US">
+  <Title Text="Business Process - Cross Project Compare" IncludeMasterFilterState="false" Url="https://readycert.net/images/logo.png" />
+  <DataSources>
+    <SqlDataSource ComponentName="dashboardSqlDataSource1">
+      <Name>SQL Data Source 1</Name>
+      <Connection Name="OhioDB" FromAppConfig="true" />
+      <Query Type="CustomSqlQuery" Name="Query">
+        <Sql>SELECT  [score_id], prj.pro_name[Project Name], st.stan_standard [Question],sd.card_id, sd.card_name[Card Name], bp.bp_identifier [BP ID], bp.bp_name [BP Name], bc.cat_identifier [BC ID]
+        ,bc.cat_name [BC Name], ba.area_identifier [BA ID], ba.area_name [BA Name], [score_col1] [As-Is],[score_col2][To-Be],rep.lib_title [BP Evidence] 
+  FROM [dbo].[rc_scorecards_scores] sc
+  inner join [dbo].[rc_scorecards_matrix] mx on sc.score_itemid = mx.matrix_itemkey
+  left join [dbo].[rc_scorecards] sd on mx.matrix_card = sd.card_id
+  inner join [dbo].[rc_scorecards_standards] st on sd.card_id = st.stan_card and sc.score_standard = st.stan_id
+  left join [dbo].[rc_projects] prj on sc.score_projectid = prj.pro_ID
+  inner join [dbo].[rc_assessment_processes] bp on mx.matrix_itemkey = bp.bp_id
+  inner join [dbo].[rc_assessment_categories] bc on bp.bp_bcID = bc.cat_id
+  inner join [dbo].[rc_assessment_areas] ba on bc.cat_baID = ba.area_id
+  left join [dbo].[rc_repository_attachments] att on sc.score_id = att.att_itemid
+  left join [dbo].[rc_repository] rep on att.att_artifact = rep.lib_id
+  where bp.bp_deleted = 0
+  order by st.stan_standard, prj.pro_name</Sql>
+      </Query>
+      <ResultSchema>
+        <DataSet Name="SQL Data Source 1">
+          <View Name="Query">
+            <Field Name="score_id" Type="Guid" />
+            <Field Name="Project Name" Type="String" />
+            <Field Name="Question" Type="String" />
+            <Field Name="card_id" Type="Guid" />
+            <Field Name="Card Name" Type="String" />
+            <Field Name="BP ID" Type="String" />
+            <Field Name="BP Name" Type="String" />
+            <Field Name="BC ID" Type="String" />
+            <Field Name="BC Name" Type="String" />
+            <Field Name="BA ID" Type="String" />
+            <Field Name="BA Name" Type="String" />
+            <Field Name="As-Is" Type="Int32" />
+            <Field Name="To-Be" Type="Int32" />
+            <Field Name="BP Evidence" Type="String" />
+          </View>
+        </DataSet>
+      </ResultSchema>
+      <ConnectionOptions CloseConnection="true" />
+      <CalculatedFields>
+        <CalculatedField Name="Calculated Impact" Expression="[To-Be] - [As-Is]" DataType="Auto" DataMember="Query" />
+      </CalculatedFields>
+    </SqlDataSource>
+  </DataSources>
+  <Items>
+    <Pivot ComponentName="pivotDashboardItem1" Name="2 Project Compare Pivot Grid" DataSource="dashboardSqlDataSource1" DataMember="Query">
+      <DataItems>
+        <Dimension DataMember="Project Name" DefaultId="DataItem9" />
+        <Measure DataMember="As-Is" ShowTotals="false" ShowGrandTotals="false" Name="As-Is" SummaryType="Min" DefaultId="DataItem7" />
+        <Measure DataMember="To-Be" ShowTotals="false" ShowGrandTotals="false" Name="To-Be" SummaryType="Min" DefaultId="DataItem8" />
+        <Dimension DataMember="Project Name" DefaultId="DataItem11" />
+        <Dimension DataMember="Card Name" DefaultId="DataItem0" />
+        <Dimension DataMember="Question" DefaultId="DataItem6" />
+        <Dimension DataMember="BP Name" DefaultId="DataItem2" />
+      </DataItems>
+      <HiddenDimensions>
+        <Dimension DefaultId="DataItem9" />
+      </HiddenDimensions>
+      <Columns>
+        <Column DefaultId="DataItem11" />
+      </Columns>
+      <Rows>
+        <Row DefaultId="DataItem2" />
+        <Row DefaultId="DataItem0" />
+        <Row DefaultId="DataItem6" />
+      </Rows>
+      <Values>
+        <Value DefaultId="DataItem7" />
+        <Value DefaultId="DataItem8" />
+      </Values>
+      <AutoExpandColumnGroups>true</AutoExpandColumnGroups>
+      <AutoExpandRowGroups>true</AutoExpandRowGroups>
+      <ShowColumnGrandTotals>false</ShowColumnGrandTotals>
+      <ShowRowGrandTotals>false</ShowRowGrandTotals>
+      <ShowRowTotals>false</ShowRowTotals>
+      <LayoutType>Tabular</LayoutType>
+    </Pivot>
+    <TreeView ComponentName="treeViewDashboardItem1" Name="Data selector" DataSource="dashboardSqlDataSource1" DataMember="Query">
+      <DataItems>
+        <Dimension DataMember="Project Name" DefaultId="DataItem0" />
+        <Dimension DataMember="BA Name" DefaultId="DataItem1" />
+        <Dimension DataMember="BP Name" DefaultId="DataItem2" />
+      </DataItems>
+      <FilterDimensions>
+        <Dimension DefaultId="DataItem0" />
+        <Dimension DefaultId="DataItem1" />
+        <Dimension DefaultId="DataItem2" />
+      </FilterDimensions>
+    </TreeView>
+  </Items>
+  <LayoutTree>
+    <LayoutGroup>
+      <LayoutItem DashboardItem="pivotDashboardItem1" Weight="84.351145038167942" />
+      <LayoutItem DashboardItem="treeViewDashboardItem1" Weight="15.648854961832061" />
+    </LayoutGroup>
+  </LayoutTree>
+</Dashboard>

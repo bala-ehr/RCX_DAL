@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ChartXmlSerializer version="17.2.4.0">
+  <Chart AutoLayout="true" AppearanceNameSerializable="Default" SelectionMode="None" SeriesSelectionMode="Series">
+    <DataContainer BoundSeriesSorting="None">
+      <SeriesSerializable>
+        <Item1 Name="Start to Finish" LegendName="Default Legend" ArgumentDataMember="rm_title" ValueDataMembersSerializable="rm_startdate;rm_cmsreviewdate" ValueScaleType="DateTime" LabelsVisibility="True">
+          <View BarWidth="0.7" Color="242, 242, 242" TypeNameSerializable="OverlappedGanttSeriesView">
+            <FillStyle FillMode="Gradient">
+              <Options GradientMode="TopLeftToBottomRight" Color2="141, 179, 226" TypeNameSerializable="RectangleGradientFillOptions" />
+            </FillStyle>
+          </View>
+          <Label Position="Center" Indent="20" TypeNameSerializable="RangeBarSeriesLabel" TextOrientation="Horizontal" />
+        </Item1>
+        <Item2 Name="Estimated Duration" LegendName="Default Legend" ArgumentDataMember="rm_title" ToolTipHintDataMember="rm_title" ValueDataMembersSerializable="rm_startdate;rm_estimatedend" ArgumentScaleType="Qualitative" ValueScaleType="DateTime">
+          <View BarWidth="0.5" Color="0, 119, 164" TypeNameSerializable="SideBySideGanttSeriesView">
+            <LinkOptions ColorSource="OwnColor" />
+            <FillStyle FillMode="Solid" />
+          </View>
+        </Item2>
+        <Item3 Name="Estimate Error" ArgumentDataMember="rm_title" ValueDataMembersSerializable="rm_estimatedend;rm_actualend" ValueScaleType="DateTime">
+          <View BarWidth="0.5" Color="255, 111, 112" TypeNameSerializable="SideBySideGanttSeriesView">
+            <LinkOptions ColorSource="ParentBorderColor" />
+            <FillStyle FillMode="Solid" />
+          </View>
+        </Item3>
+        <Item4 Name="Actual Duration" LegendName="Default Legend" ArgumentDataMember="rm_title" ValueDataMembersSerializable="rm_startdate;rm_actualend" ArgumentScaleType="Qualitative" ValueScaleType="DateTime">
+          <View BarWidth="0.5" Color="161, 214, 105" TypeNameSerializable="SideBySideGanttSeriesView">
+            <LinkOptions ColorSource="OwnColor" />
+            <FillStyle FillMode="Solid" />
+          </View>
+        </Item4>
+        <Item5 Name="Review Period" ArgumentDataMember="rm_title" ValueDataMembersSerializable="rm_actualend;rm_cmsreviewdate" ArgumentScaleType="Qualitative" ValueScaleType="DateTime">
+          <View BarWidth="0.5" Color="255, 254, 175" TypeNameSerializable="SideBySideGanttSeriesView">
+            <FillStyle FillMode="Solid" />
+          </View>
+        </Item5>
+      </SeriesSerializable>
+      <SeriesTemplate />
+    </DataContainer>
+    <Diagram LabelsResolveOverlappingMinIndent="0" TypeNameSerializable="GanttDiagram">
+      <AxisX VisibleInPanesSerializable="-1">
+        <ConstantLines>
+          <Item1 AxisValueSerializable="Enterprise ROadMap A" Visible="false" ShowBehind="false" Name="Constant Line 1" />
+        </ConstantLines>
+      </AxisX>
+      <AxisY VisibleInPanesSerializable="-1" />
+    </Diagram>
+  </Chart>
+</ChartXmlSerializer>

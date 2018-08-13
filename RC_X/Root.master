@@ -1,0 +1,247 @@
+<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Root.master.cs" Inherits="RC_X.RootMaster" %>
+<%@ Register Src="~/controls/scorecard.ascx"  TagPrefix="uc3" TagName="scorecard" %>
+
+<%-- DXCOMMENT: Page Root.master is a master page that contains the root layout (it includes Header, Cental Area, and Footer) --%>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, user-scalable=no, maximum-scale=1.0, minimum-scale=1.0" />
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="Content/Site.css" />
+
+    <script type="text/javascript">
+        function updateHeaderMenuOrientation() {
+            if (!window.headerMenu) return;
+            var orientation = headerPane.IsExpandable() ? 'Vertical' : 'Horizontal';
+            if (orientation !== headerMenu.GetOrientation())
+                headerMenu.SetOrientation(orientation);
+        }
+    </script>
+
+    <script type="text/javascript">
+        function ProjectSwitch(s, e) {
+
+            gridProjects.PerformCallback(e.visibleIndex);
+        }
+
+    </script>
+
+    <asp:ContentPlaceHolder ID="HeaderScriptPlaceHolder" runat="server"></asp:ContentPlaceHolder>
+</head>
+<body runat="server" id="Body">
+    <form id="form1" runat="server">
+        <div>
+            <dx:ASPxMenu ID="menuRC" runat="server" Width="100%" FirstSubMenuDirection="RightOrBottom" OnItemClick="menuRC_ItemClick" Font-Bold="True" Font-Size="Small" VerticalAlign="Middle" Height="50px">
+                <ClientSideEvents ItemClick="function(s, e) { e.processOnServer = e.item.GetItemCount() == 0; // Prevent generating a postback for parent menu items
+                        }" />
+                <ItemStyle Height="40px" VerticalAlign="Middle">
+                    <Paddings PaddingTop="10px" />
+                </ItemStyle>
+                <Items>
+
+                    <dx:MenuItem Text="Enterprise">
+
+                        <Items>
+                            <dx:MenuItem Name="ent_dashboards" NavigateUrl="~/rc_enterprise/ent_dashboards.aspx" Text="Dashboards">
+                                <Image IconID="gauges_gaugestylefullcircular_32x32">
+                                </Image>
+                            </dx:MenuItem>
+                            <dx:MenuItem Name="ent_reports" NavigateUrl="~/rc_enterprise/ent_reports.aspx" Text="Reports">
+                                <Image IconID="programming_showtestreport_32x32">
+                                </Image>
+                            </dx:MenuItem>
+                            <dx:MenuItem Name="ent_APD" NavigateUrl="~/rc_enterprise/ent_apd.aspx" Text="APD">
+                                <Image IconID="functionlibrary_text_32x32">
+                                </Image>
+                            </dx:MenuItem>
+                            <dx:MenuItem Name="ent_RTM_Planning" NavigateUrl="rc_enterprise/ent_rtmplanning.aspx" Text="Planning RTM">
+                                <Image IconID="actions_converttorange_32x32">
+                                </Image>
+                            </dx:MenuItem>
+                             <dx:MenuItem Name="ent_RTM_Planning_Reports" NavigateUrl="rc_enterprise/ent_rtmplanning_reports.aspx" Text="Planning RTM Reports">
+                                <Image IconID="programming_showtestreport_32x32">
+                                </Image>
+                            </dx:MenuItem>
+                            <dx:MenuItem Name="Projects" NavigateUrl="rc_enterprise/ent_projects.aspx" Text="Projects">
+                                 <Image IconID="programming_ide_32x32">
+                                </Image>
+                            </dx:MenuItem>
+                            <dx:MenuItem Text="Settings" visible="true">
+                                 <Items>
+                                     <dx:MenuItem NavigateUrl="~/rc_enterprise/ent_assessment.aspx" Text="Edit Enterprise Assessment" ToolTip="Edit Enterprise Assessment">
+                                         <Image IconID="reports_groupfieldcollection_32x32">
+                                         </Image>
+                                     </dx:MenuItem>
+                                     <dx:MenuItem NavigateUrl="~/rc_enterprise/ent_RTM.aspx" Text="Edit Enterprise RTM" ToolTip="Edit Enterprise RTM">
+                                         <Image IconID="grid_customizegrid_32x32">
+                                         </Image>
+                                     </dx:MenuItem>
+                                     <dx:MenuItem Name="Administrator" NavigateUrl="~/rc_enterprise/ent_setup.aspx" Text="Configuration">
+                                         <Image IconID="filterelements_showall_32x32">
+                                         </Image>
+                                     </dx:MenuItem>
+                                     <dx:MenuItem Name="Workflow Multi Assign" NavigateUrl="rc_enterprise/ent_workflow_multiassign.aspx" Text="Workflow MultiAssign">
+                                         <Image IconID="filterelements_showall_32x32">
+                                         </Image>
+                                     </dx:MenuItem>
+                                     <dx:MenuItem Name="Security" NavigateUrl="~/rc_enterprise/ent_security.aspx" Text="Security">
+                                         <Image IconID="businessobjects_bouser_32x32">
+                                         </Image>
+                                     </dx:MenuItem>
+                                 </Items>
+                                 <Image IconID="setup_properties_32x32">
+                                </Image>
+                            </dx:MenuItem>
+                        </Items>
+
+                        <Image IconID="businessobjects_bolocalization_32x32"></Image>
+                    </dx:MenuItem>
+                    <dx:MenuItem Text="Global">
+                        <Items>
+
+
+                            <dx:MenuItem Name="Components" NavigateUrl="rc_enterprise/rc_components.aspx" Text="Components">
+                                <Image IconID="programming_ide_32x32">
+                                </Image>
+                            </dx:MenuItem>
+                            <dx:MenuItem NavigateUrl="~/rc_enterprise/ent_pm.aspx" Text="Project Management" Name="projectmanagement">
+                                <Image IconID="programming_project_32x32">
+                                </Image>
+                            </dx:MenuItem>
+                            
+
+                            <dx:MenuItem NavigateUrl="~/rc_enterprise/ent_roadmap_view.aspx" Text="Roadmap View">
+                                <Image IconID="maps_defaultmap_32x32">
+                                </Image>
+                            </dx:MenuItem>
+                             <dx:MenuItem NavigateUrl="rc_enterprise/ent_IVV.aspx" Text="IV&V Screen">
+                                <Image IconID="programming_project_32x32">
+                                </Image>
+                            </dx:MenuItem>
+                        </Items>
+                        <Image IconID="miscellaneous_country_32x32">
+                        </Image>
+                    </dx:MenuItem>
+
+                    <dx:MenuItem NavigateUrl="~/rc_project/pro_repository.aspx" Text="Repository"
+                        Name="repository">
+                        <Image IconID="actions_open_32x32">
+                        </Image>
+                    </dx:MenuItem>
+                    <dx:MenuItem Text="Projects">
+
+                        <Items>
+                            <dx:MenuItem Name="Selector" Text=" ">
+                                <Template>
+                                    <dx:ASPxGridView ID="gridProjects" runat="server" Width="250px" AutoGenerateColumns="False"  KeyFieldName="Id" EnableCallBacks="False"  ClientInstanceName="gridProjects"  OnCustomCallback="gridProjects_CustomCallback" OnInit="gridProjects_Init">
+                                        <ClientSideEvents RowClick="ProjectSwitch"
+                                            RowDblClick="ProjectSwitch" />
+                                        <SettingsPager Visible="False" PageSize="30">
+                                        </SettingsPager>
+                                        <Settings ShowColumnHeaders="False" />
+                                        <SettingsBehavior AllowSelectSingleRowOnly="true" AllowSelectByRowClick="true" />
+                                        <SettingsDataSecurity AllowDelete="False" AllowEdit="False" AllowInsert="False" />
+                                        <Columns>
+                                            <dx:GridViewDataTextColumn FieldName="Id" ReadOnly="True" Visible="False" VisibleIndex="0" Width="20px">
+                                            </dx:GridViewDataTextColumn>
+                                            <dx:GridViewDataTextColumn Caption="Project" FieldName="Name" SortIndex="0" SortOrder="Ascending" VisibleIndex="3" Width="100px">
+                                            </dx:GridViewDataTextColumn>
+                                            <dx:GridViewDataColorEditColumn Caption="" FieldName="Color" VisibleIndex="2" Width="20px" CellStyle-HorizontalAlign="Center" BatchEditModifiedCellStyle-HorizontalAlign="Center">
+                                                <DataItemTemplate>
+                                                    <div style="width: 15px; height: 15px; border: #9f9f9f 1px solid; background-color: <%#Container.Text %>"></div>
+                                                </DataItemTemplate>
+                                            </dx:GridViewDataColorEditColumn>
+                                        </Columns>
+                                    </dx:ASPxGridView>
+                                </Template>
+                            </dx:MenuItem>
+                        </Items>
+                        <Image IconID="programming_project_32x32">
+                        </Image>
+                    </dx:MenuItem>
+
+                    <dx:MenuItem Text="Assessment" NavigateUrl="~/rc_project/pro_assessment.aspx">
+                        <Image IconID="tasks_edittask_32x32">
+                        </Image>
+                    </dx:MenuItem>
+                    <dx:MenuItem NavigateUrl="~/rc_project/pro_rtm.aspx" Text="RTM">
+                        <Image IconID="filterelements_checkbuttons_32x32">
+                        </Image>
+                    </dx:MenuItem>
+                    <dx:MenuItem Name="reports" Text="Analysis">
+                        <Items>
+                            <dx:MenuItem Name="pro_reports" NavigateUrl="~/rc_project/pro_dashboards.aspx" Text="Project Dashboards">
+                                <Image IconID="gauges_gaugestylefullcircular_32x32">
+                                </Image>
+                            </dx:MenuItem>
+                            <dx:MenuItem NavigateUrl="~/rc_project/pro_reports.aspx" Text="Project Reports">
+                                <Image IconID="programming_showtestreport_32x32">
+                                </Image>
+                            </dx:MenuItem>
+                            <dx:MenuItem Name="roadmap" NavigateUrl="rc_enterprise/ent_roadmap.aspx" Text="Tasks, Gaps &amp; Goals">
+                                <Image IconID="businessobjects_botask_32x32">
+                                </Image>
+                            </dx:MenuItem>
+                            <dx:MenuItem Name="deliverable" NavigateUrl="rc_project/pro_deliverable_schedule.aspx" Text="Deliverable Schedule">
+                                <Image IconID="businessobjects_botask_32x32">
+                                </Image>
+                            </dx:MenuItem>
+                        </Items>
+                        <Image IconID="chart_fullstackedbar_32x32">
+                        </Image>
+                    </dx:MenuItem>
+
+                    <dx:MenuItem Text="User">
+                        <Items>
+                            <dx:MenuItem Text="Personal Dashboard" NavigateUrl="~/rc_project/userhome.aspx" Name="Personal Dashboard" ToolTip="Personal Dashboard">
+                                <Image IconID="gauges_gaugestylefullcircular_32x32">
+                                </Image>
+                            </dx:MenuItem>
+                            <dx:MenuItem NavigateUrl="http://wiki.readycert.net/index.php?title=Main_Page" Target="_blank" Text="ReadyCert Wiki">
+                                <image iconid="support_knowledgebasearticle_32x32">
+                                </image>
+                            </dx:MenuItem>
+                            <dx:MenuItem Text="Manage Profile" NavigateUrl="~/Account/Manage.aspx" Name="Manage Profile">
+                                <Image IconID="print_profile_32x32devav">
+                                </Image>
+                            </dx:MenuItem>
+                            <dx:MenuItem Text="Log Out" Name="Log Out">
+                                <Image IconID="businessobjects_bopermission_32x32">
+                                </Image>
+                            </dx:MenuItem>
+                        </Items>
+                        <Image IconID="people_usergroup_32x32">
+                        </Image>
+                    </dx:MenuItem>
+                </Items>
+                <Border BorderWidth="0px" />
+            </dx:ASPxMenu>
+        </div>
+        <div class="pageName">
+            <dx:ASPxLabel Font-Italic="true" Font-Bold="true" Font-Size="Large" ForeColor="Black" Wrap="Default" ID="pageName" runat="server" >
+                
+            </dx:ASPxLabel>
+        </div>
+        <dx:ASPxGlobalEvents runat="server">
+            <ClientSideEvents ControlsInitialized="updateHeaderMenuOrientation" BrowserWindowResized="updateHeaderMenuOrientation" EndCallback="CheckSession" BeginCallback="CheckSession" CallbackError="HandleErrors" />
+        </dx:ASPxGlobalEvents>
+
+        <dx:ASPxCallbackPanel ID="rootCall" ClientEnabled="true" ClientInstanceName="rootCall" runat="server" Width="100%" OnCallback="rootCall_Callback" EnableCallbackAnimation="True" EnableClientSideAPI="True" HideContentOnCallback="false">
+            <PanelCollection>
+                <dx:PanelContent>
+                    <dx:ASPxHiddenField ID="rootParameters" runat="server" ClientInstanceName="rootParameters"></dx:ASPxHiddenField>
+                    <asp:ContentPlaceHolder ID="Content" runat="server"> </asp:ContentPlaceHolder>
+
+                   
+                </dx:PanelContent>
+            </PanelCollection>
+        </dx:ASPxCallbackPanel>
+        <asp:ScriptManager ID="sm" runat="server" OnInit="sm_Init" EnablePageMethods="true" EnableScriptGlobalization="True">
+            <Scripts>
+                <asp:ScriptReference Path="~/MasterClientSide.js?abcddddefdghijkldzmnopxqcsrstusvxddyrrxzyasxsds" />
+            </Scripts>
+        </asp:ScriptManager>
+    </form>
+</body>
+</html>

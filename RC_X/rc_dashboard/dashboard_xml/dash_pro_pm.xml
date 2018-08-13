@@ -1,0 +1,169 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Dashboard CurrencyCulture="en-US">
+  <Title Text="Project User Dashboard" Url="https://rcxbox.readycert.net/Content/Images/logo.png" />
+  <DataSources>
+    <SqlDataSource ComponentName="dashboardSqlDataSource1">
+      <Name>SQL Data Source 1</Name>
+      <Connection Name="DevDB" FromAppConfig="true" />
+      <Query Type="SelectQuery" Name="WORKFLOW">
+        <Parameter Name="Project" Type="DevExpress.DataAccess.Expression">(System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089)([Parameters.Project])</Parameter>
+        <Tables>
+          <Table Name="rc_workflow" Alias="WORKFLOW" X="200" Y="240" Width="125" Height="248" />
+          <Table Name="rc_projects" Alias="PROJECTS" X="400" Y="300" Width="125" Height="153" />
+          <Table Name="AspNetUsers" Alias="from" X="190" Y="520" Width="125" Height="343" />
+          <Table Name="rc_assessment_active" Alias="isactive" X="580" Y="450" Width="125" Height="134" />
+          <Table Name="rc_assessment_processes" Alias="processes" X="810" Y="430" Width="125" Height="210" />
+          <Table Name="AspNetUsers" Alias="to" X="30" Y="330" Width="125" Height="343" />
+          <Table Name="rc_assessment_categories" Alias="categories" X="1000" Y="440" Width="125" Height="210" />
+          <Table Name="rc_assessment_areas" Alias="areas" X="1160" Y="440" Width="125" Height="191" />
+          <Relation Type="Inner" Parent="WORKFLOW" Nested="PROJECTS">
+            <KeyColumn Parent="wf_projectid" Nested="pro_ID" />
+          </Relation>
+          <Relation Type="Inner" Parent="WORKFLOW" Nested="from">
+            <KeyColumn Parent="wf_from" Nested="Id" />
+          </Relation>
+          <Relation Type="Inner" Parent="PROJECTS" Nested="isactive">
+            <KeyColumn Parent="pro_ID" Nested="act_projectID" />
+          </Relation>
+          <Relation Type="Inner" Parent="isactive" Nested="processes">
+            <KeyColumn Parent="act_bpID" Nested="bp_id" />
+          </Relation>
+          <Relation Type="Inner" Parent="WORKFLOW" Nested="to">
+            <KeyColumn Parent="wf_to" Nested="Id" />
+          </Relation>
+          <Relation Type="Inner" Parent="processes" Nested="categories">
+            <KeyColumn Parent="bp_bcID" Nested="cat_id" />
+          </Relation>
+          <Relation Type="Inner" Parent="categories" Nested="areas">
+            <KeyColumn Parent="cat_baID" Nested="area_id" />
+          </Relation>
+        </Tables>
+        <Columns>
+          <Column Table="WORKFLOW" Name="wf_status" />
+          <Column Table="WORKFLOW" Name="wf_status_value" />
+          <Column Table="WORKFLOW" Name="wf_statusdate" />
+          <Column Table="PROJECTS" Name="pro_name" />
+          <Column Table="WORKFLOW" Name="wf_duedate" />
+          <Column Table="processes" Name="bp_name" />
+          <Column Table="processes" Name="bp_identifier" />
+          <Column Table="from" Name="UserName" />
+          <Column Table="to" Name="UserName" Alias="AspNetUsers_1_UserName" />
+          <Column Table="categories" Name="cat_name" />
+          <Column Table="areas" Name="area_name" />
+        </Columns>
+        <Filter>[WORKFLOW.wf_statusdate] &lt; LocalDateTimeTomorrow()</Filter>
+        <GroupFilter></GroupFilter>
+      </Query>
+      <ResultSchema>
+        <DataSet Name="SQL Data Source 1">
+          <View Name="WORKFLOW">
+            <Field Name="wf_status" Type="String" />
+            <Field Name="wf_status_value" Type="Int32" />
+            <Field Name="wf_statusdate" Type="DateTime" />
+            <Field Name="pro_name" Type="String" />
+            <Field Name="wf_duedate" Type="DateTime" />
+            <Field Name="bp_name" Type="String" />
+            <Field Name="bp_identifier" Type="String" />
+            <Field Name="UserName" Type="String" />
+            <Field Name="AspNetUsers_1_UserName" Type="String" />
+            <Field Name="cat_name" Type="String" />
+            <Field Name="area_name" Type="String" />
+          </View>
+        </DataSet>
+      </ResultSchema>
+      <ConnectionOptions CloseConnection="true" />
+      <CalculatedFields>
+        <CalculatedField Name="Calculated Field 1" Expression="CountDistinct([wf_status])" DataType="Auto" DataMember="WORKFLOW" />
+      </CalculatedFields>
+    </SqlDataSource>
+  </DataSources>
+  <Items>
+    <Pie ComponentName="pieDashboardItem1" Name="Workflow items by User" DataSource="dashboardSqlDataSource1" DataMember="WORKFLOW">
+      <DataItems>
+        <Measure DataMember="wf_status" Name="Workflow items by User" SummaryType="CountDistinct" DefaultId="DataItem1">
+          <Calculation>
+            <PercentOfTotal />
+          </Calculation>
+          <WindowDefinition>
+            <PieWindowDefinition DefinitionMode="Arguments" />
+          </WindowDefinition>
+        </Measure>
+        <Dimension DataMember="UserName" DefaultId="DataItem2" />
+        <Dimension DataMember="area_name" DefaultId="DataItem0" />
+        <Dimension DataMember="AspNetUsers_1_UserName" TextGroupInterval="Alphabetical" DefaultId="DataItem3" />
+      </DataItems>
+      <HiddenDimensions>
+        <Dimension DefaultId="DataItem3" />
+      </HiddenDimensions>
+      <SeriesDimensions>
+        <SeriesDimension DefaultId="DataItem2" />
+      </SeriesDimensions>
+      <Arguments>
+        <Argument DefaultId="DataItem0" />
+      </Arguments>
+      <Values>
+        <Value DefaultId="DataItem1" />
+      </Values>
+    </Pie>
+    <Chart ComponentName="chartDashboardItem1" Name="Workflow Counts by Business Area and Project" DataSource="dashboardSqlDataSource1" DataMember="WORKFLOW">
+      <DataItems>
+        <Dimension DataMember="pro_name" DefaultId="DataItem1" />
+        <Dimension DataMember="area_name" DefaultId="DataItem2" />
+        <Measure DataMember="wf_status" Name="Workflwo Status" SummaryType="CountDistinct" DefaultId="DataItem0" />
+      </DataItems>
+      <SeriesDimensions>
+        <SeriesDimension DefaultId="DataItem1" />
+      </SeriesDimensions>
+      <Arguments>
+        <Argument DefaultId="DataItem2" />
+      </Arguments>
+      <Panes>
+        <Pane Name="Pane 1">
+          <Series>
+            <Simple>
+              <Value DefaultId="DataItem0" />
+              <PointLabelOptions Position="Inside" ContentType="Value" />
+            </Simple>
+          </Series>
+        </Pane>
+      </Panes>
+    </Chart>
+    <TreeView ComponentName="treeViewDashboardItem1" Name="Assessments Data - Tree View" DataSource="dashboardSqlDataSource1" DataMember="WORKFLOW">
+      <DataItems>
+        <Dimension DataMember="wf_status_value" DefaultId="DataItem6" />
+        <Measure DataMember="wf_statusdate" SummaryType="Count" DefaultId="DataItem8" />
+        <Dimension DataMember="pro_name" DefaultId="DataItem0" />
+        <Dimension DataMember="area_name" DefaultId="DataItem1" />
+        <Dimension DataMember="cat_name" DefaultId="DataItem2" />
+        <Dimension DataMember="bp_identifier" DefaultId="DataItem3" />
+        <Dimension DataMember="bp_name" DefaultId="DataItem4" />
+        <Dimension DataMember="wf_status" SortOrder="Descending" DefaultId="DataItem5" />
+        <Dimension DataMember="AspNetUsers_1_UserName" DefaultId="DataItem7" />
+      </DataItems>
+      <HiddenDimensions>
+        <Dimension DefaultId="DataItem6" />
+      </HiddenDimensions>
+      <HiddenMeasures>
+        <Measure DefaultId="DataItem8" />
+      </HiddenMeasures>
+      <FilterDimensions>
+        <Dimension DefaultId="DataItem0" />
+        <Dimension DefaultId="DataItem1" />
+        <Dimension DefaultId="DataItem2" />
+        <Dimension DefaultId="DataItem3" />
+        <Dimension DefaultId="DataItem4" />
+        <Dimension DefaultId="DataItem5" />
+        <Dimension DefaultId="DataItem7" />
+      </FilterDimensions>
+    </TreeView>
+  </Items>
+  <LayoutTree>
+    <LayoutGroup Orientation="Vertical">
+      <LayoutGroup Weight="35.876623376623378">
+        <LayoutItem DashboardItem="chartDashboardItem1" Weight="49.141630901287556" />
+        <LayoutItem DashboardItem="treeViewDashboardItem1" Weight="50.858369098712444" />
+      </LayoutGroup>
+      <LayoutItem DashboardItem="pieDashboardItem1" Weight="64.123376623376629" />
+    </LayoutGroup>
+  </LayoutTree>
+</Dashboard>
