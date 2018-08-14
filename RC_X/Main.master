@@ -1,0 +1,104 @@
+<%@ Master Language="C#" MasterPageFile="~/Root.master" AutoEventWireup="true" CodeBehind="Main.master.cs" Inherits="RC_X.MainMaster"   %>
+
+<%-- DXCOMMENT: Page Main.master is a master page that contains central area layout --%>
+<asp:Content ID="Content2" ContentPlaceHolderID="Content" runat="server">
+      <%--  <dx:ASPxPanel ID="LeftPane" width="150px" runat="server" FixedPosition="WindowLeft" ClientInstanceName="leftPane" CssClass="leftPane" Collapsible="true">
+            <SettingsAdaptivity CollapseAtWindowInnerWidth="1023" />
+            <Styles>
+                <Panel CssClass="panel"></Panel>
+            </Styles>
+            <PanelCollection>
+                <dx:PanelContent runat="server" SupportsDisabledAttribute="True">
+                        <div class="leftPanel">--%>
+                            <%-- DXCOMMENT: Configure the left panel's ASPxMenu --%>
+     
+<%--<dx:ASPxMenu ID="menuRC" runat="server" Orientation="Vertical" Width="100%" FirstSubMenuDirection="RightOrBottom">
+    <Items>
+           
+        <dx:MenuItem Text="Home" NavigateUrl="~/project/userhome.aspx"  >
+        </dx:MenuItem>
+        <dx:MenuItem NavigateUrl="~/project/enterprise.aspx" Text="Enterprise">
+        </dx:MenuItem>
+        <dx:MenuItem Text="Projects">
+            <Items>
+                <dx:MenuItem Name="Selector" Text=" ">
+                    <Template>
+                        <dx:ASPxGridView ID="gridProjects" runat="server" AutoGenerateColumns="False" DataSourceID="sqlProjects" KeyFieldName="pro_ID" EnableCallBacks="False"  ClientInstanceName="gridProjects" OnCustomCallback="gridProjects_CustomCallback">
+                            <ClientSideEvents RowClick="function(s, e) {
+	gridProjects.PerformCallback(e.visibleIndex);
+}" RowDblClick="function(s, e) {
+	gridProjects.PerformCallback(e.visibleIndex);
+}"/>
+                            <SettingsPager Visible="False" PageSize="30">
+                            </SettingsPager>
+                            <Settings ShowColumnHeaders="False" />
+                            <SettingsBehavior AllowSelectSingleRowOnly="true" AllowSelectByRowClick="true" />
+                            <SettingsDataSecurity AllowDelete="False" AllowEdit="False" AllowInsert="False" />
+                            <Columns>
+                                <dx:GridViewDataTextColumn FieldName="pro_ID" ReadOnly="True" Visible="False" VisibleIndex="0" Width="20px">
+                                </dx:GridViewDataTextColumn>
+                                <dx:GridViewDataTextColumn Caption="Project" FieldName="pro_name" SortIndex="0" SortOrder="Ascending" VisibleIndex="3" Width="100px">
+                                </dx:GridViewDataTextColumn>
+                                <dx:GridViewDataColorEditColumn Caption="" FieldName="pro_color" VisibleIndex="2" Width="20px">
+                                       <dataitemtemplate>
+                        <div style="width:15px; height:15px; border: #9f9f9f 1px solid; background-color:<%#Container.Text %>"></div>
+                    </dataitemtemplate>
+                                </dx:GridViewDataColorEditColumn>
+                       
+                            </Columns>
+                        </dx:ASPxGridView>
+
+
+                    </Template>
+                </dx:MenuItem>
+            </Items>
+        </dx:MenuItem>
+        <dx:MenuItem Text="Assessment" NavigateUrl="~/project/assessment.aspx">
+        </dx:MenuItem>
+        <dx:MenuItem NavigateUrl="~/project/rtm.aspx" Text="RTM">
+        </dx:MenuItem>
+    </Items>
+    <Border BorderWidth="0px" />
+</dx:ASPxMenu>--%>
+                            
+ <%--       <dx:ASPxNavBar ID="ASPxNavBar1" runat="server" DataSourceID="XmlDataSourceLeft" Width="100%">
+        </dx:ASPxNavBar>--%>
+
+
+
+<%--                        </div>
+                </dx:PanelContent>
+            </PanelCollection>
+        </dx:ASPxPanel>--%>
+   
+
+
+ <%--      <dx:ASPxPanel ID="rightPane" runat="server" FixedPosition="WindowRight" ClientInstanceName="rightPane" CssClass="rightPane" Collapsible="true">
+            <SettingsAdaptivity CollapseAtWindowInnerWidth="1023" />
+            <Styles>
+                <Panel CssClass="panel"></Panel>
+            </Styles>
+            <PanelCollection>
+                <dx:PanelContent runat="server" SupportsDisabledAttribute="True">
+                        <div class="rightPanel">
+                            <dx:ASPxRoundPanel ID="ASPxRoundPanel1" runat="server" ShowCollapseButton="true" Width="200px"></dx:ASPxRoundPanel>
+
+                              </div>
+                </dx:PanelContent>
+            </PanelCollection>
+        </dx:ASPxPanel>
+    --%>
+
+
+        <div class="contentPane">
+          
+        </div>
+            
+  
+            <asp:ContentPlaceHolder ID="MainContent" runat="server" />
+    
+<%-- DXCOMMENT: Configure the left panel's ASPxMenu --%>
+ 
+                  
+    
+</asp:Content>

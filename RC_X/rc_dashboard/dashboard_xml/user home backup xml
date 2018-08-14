@@ -1,0 +1,128 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Dashboard CurrencyCulture="en-US">
+  <Title Visible="false" Text="Dashboard" />
+  <DataSources>
+    <SqlDataSource ComponentName="data_workflow">
+      <Name>CurrentWorkflow</Name>
+      <Connection Name="DevDB" FromAppConfig="true" />
+      <Query Type="SelectQuery" Name="view_workflow_laststatus">
+        <Parameter Name="UserEmail" Type="DevExpress.DataAccess.Expression">(System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089)([Parameters.UserEmail])</Parameter>
+        <Tables>
+          <Table Name="view_workflow" X="30" Y="30" Width="125" Height="305" />
+        </Tables>
+        <Columns>
+          <Column Table="view_workflow" Name="AssignedTo" />
+          <Column Table="view_workflow" Name="AssignedBy" />
+          <Column Table="view_workflow" Name="Project" />
+          <Column Table="view_workflow" Name="ProjectColor" />
+          <Column Table="view_workflow" Name="Status" />
+          <Column Table="view_workflow" Name="StatusOrder" />
+          <Column Table="view_workflow" Name="Comments" />
+          <Column Table="view_workflow" Name="Manager" />
+          <Column Table="view_workflow" Name="Worker" />
+          <Column Table="view_workflow" Name="Date" />
+          <Column Table="view_workflow" Name="DueDate" />
+          <Column Table="view_workflow" Name="RC_ID" />
+          <Column Table="view_workflow" Name="RC_NAME" />
+        </Columns>
+        <Filter>Contains([view_workflow.AssignedTo], ?UserEmail)</Filter>
+        <GroupFilter></GroupFilter>
+      </Query>
+      <ResultSchema>
+        <DataSet Name="CurrentWorkflow">
+          <View Name="view_workflow_laststatus">
+            <Field Name="AssignedTo" Type="String" />
+            <Field Name="AssignedBy" Type="String" />
+            <Field Name="Project" Type="String" />
+            <Field Name="ProjectColor" Type="String" />
+            <Field Name="Status" Type="String" />
+            <Field Name="StatusOrder" Type="Int32" />
+            <Field Name="Comments" Type="String" />
+            <Field Name="Manager" Type="Guid" />
+            <Field Name="Worker" Type="Guid" />
+            <Field Name="Date" Type="DateTime" />
+            <Field Name="DueDate" Type="DateTime" />
+            <Field Name="RC_ID" Type="String" />
+            <Field Name="RC_NAME" Type="String" />
+          </View>
+        </DataSet>
+      </ResultSchema>
+      <ConnectionOptions CloseConnection="true" />
+    </SqlDataSource>
+  </DataSources>
+  <Parameters>
+    <Parameter Name="UserEmail" Value="" />
+  </Parameters>
+  <Items>
+    <Pie ComponentName="pieDashboardItem1" Name="Workflow Activities by Worker" DataSource="data_workflow" DataMember="view_workflow_laststatus" FilterString="[DataItem1] &lt;&gt; 'Unassugned'" PieType="Donut" LabelContentType="ArgumentValueAndPercent">
+      <DataItems>
+        <Measure DataMember="AssignedTo" SummaryType="CountDistinct" DefaultId="DataItem0" />
+        <Dimension DataMember="AssignedTo" DefaultId="DataItem2" />
+        <Dimension DataMember="Status" DefaultId="DataItem1" />
+      </DataItems>
+      <SeriesDimensions>
+        <SeriesDimension DefaultId="DataItem2" />
+      </SeriesDimensions>
+      <Arguments>
+        <Argument DefaultId="DataItem1" />
+      </Arguments>
+      <Values>
+        <Value DefaultId="DataItem0" />
+      </Values>
+    </Pie>
+    <Pivot ComponentName="pivotDashboardItem1" Name="Itemss assigned to you" DataSource="data_workflow" DataMember="view_workflow_laststatus" FilterString="Not [DataItem5] In ('Unassugned')">
+      <DataItems>
+        <Dimension DataMember="AssignedTo" DefaultId="DataItem0" />
+        <Measure DataMember="AssignedTo" SummaryType="Count" DefaultId="DataItem2" />
+        <Dimension DataMember="Project" DefaultId="DataItem1" />
+        <Dimension DataMember="RC_ID" DefaultId="DataItem4" />
+        <Dimension DataMember="RC_NAME" DefaultId="DataItem3" />
+        <Dimension DataMember="Status" DefaultId="DataItem5" />
+      </DataItems>
+      <FormatRules>
+        <PivotItemFormatRule Name="FormatRule 1" Enabled="false">
+          <FormatConditionDateOccuring DateType="Yesterday, EarlierThisWeek, LastWeek, EarlierThisMonth, EarlierThisYear, PriorThisYear, Beyond">
+            <IconSettings IconType="IndicatorRedFlag" />
+          </FormatConditionDateOccuring>
+          <PivotItemFormatRuleLevel />
+        </PivotItemFormatRule>
+      </FormatRules>
+      <Columns>
+        <Column DefaultId="DataItem1" />
+        <Column DefaultId="DataItem5" />
+      </Columns>
+      <Rows>
+        <Row DefaultId="DataItem0" />
+        <Row DefaultId="DataItem4" />
+        <Row DefaultId="DataItem3" />
+      </Rows>
+      <Values>
+        <Value DefaultId="DataItem2" />
+      </Values>
+    </Pivot>
+    <Gauge ComponentName="gaugeDashboardItem1" Name="Count of Workflow Items per Quarter" DataSource="data_workflow" DataMember="view_workflow_laststatus">
+      <DataItems>
+        <Measure DataMember="Status" Name="Count of Workflow Items" SummaryType="Count" DefaultId="DataItem0" />
+        <Dimension DataMember="DueDate" DateTimeGroupInterval="QuarterYear" DefaultId="DataItem1" />
+      </DataItems>
+      <SeriesDimensions>
+        <SeriesDimension DefaultId="DataItem1" />
+      </SeriesDimensions>
+      <GaugeElement>
+        <ActualValue DefaultId="DataItem0" />
+        <AbsoluteVariationNumericFormat />
+        <PercentVariationNumericFormat />
+        <PercentOfTargetNumericFormat />
+      </GaugeElement>
+    </Gauge>
+  </Items>
+  <LayoutTree>
+    <LayoutGroup Orientation="Vertical">
+      <LayoutGroup Weight="49.92272024729521">
+        <LayoutItem DashboardItem="pieDashboardItem1" Weight="49.957155098543275" />
+        <LayoutItem DashboardItem="gaugeDashboardItem1" Weight="50.042844901456725" />
+      </LayoutGroup>
+      <LayoutItem DashboardItem="pivotDashboardItem1" Weight="50.07727975270479" />
+    </LayoutGroup>
+  </LayoutTree>
+</Dashboard>

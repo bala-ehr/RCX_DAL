@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Elements xmlns="http://schemas.microsoft.com/sharepoint/">
+  <item enterprise="EHR" connstring="Data Source=rcx.database.windows.net;Initial Catalog=db_1;Persist Security Info=True;User ID=RCXadmin;Password=rcxrcx12!@"></item>
+  <item enterprise="Magellan" connstring="magellanDB"></item>
+  
+</Elements>

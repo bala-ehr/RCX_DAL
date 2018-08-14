@@ -1,0 +1,190 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <metadata name="sqlDataSource1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <data name="customSqlQuery1.Sql" xml:space="preserve">
+    <value>SELECT chck.ch_id ChecklistId
+	,chck.ch_title ChecklistTitle
+	,obj.bo_id ObjectiveId
+	,obj.bo_name ObjectiveName
+	,obj.bo_unique_id [BO ID]
+	,cri.[src_id]  CriteriaId
+      ,cri.[src_title] CriteriaTitle
+	,cri.[src_source] CriteriaSource
+	,mil.mil_id MileStoneID
+	,mil.mil_name MileStoneName
+	,cri.src_unique_name CriteriaName
+	,cri.[src_criteria] Criteria
+	,chck.ch_title ChecklistType
+	,prj.pro_ID ProjectId
+	,prj.pro_name Projectname
+	
+FROM [dbo].[rc_projects] prj
+INNER JOIN [dbo].[rc_milestones] mil on prj.pro_milestoneId = mil.mil_id
+INNER JOIN [dbo].[rc_rtm_active] act ON prj.pro_ID = act.act_projectID
+INNER JOIN [dbo].[rc_rtm_checklists] chck on act.act_checklist = chck.ch_id
+INNER JOIN [dbo].[rc_rtm_objectives] obj on chck.ch_id = obj.bo_checklist
+INNER JOIN [dbo].[rc_rtm_criteria] cri on obj.bo_id = cri.src_objective
+WHERE prj.pro_ID = @projectId
+AND cri.src_deleted = 0
+AND mil.IsStatic = 1
+AND act.act_isacctive =1
+ORDER BY chck.ch_id</value>
+  </data>
+  <data name="customSqlQuery2.Sql" xml:space="preserve">
+    <value>select att_itemid, att_projectid, STUFF((select ', ' +  CAST([lib_title] AS VARCHAR(255)) 
+		from [rc_repository] p
+		where p.lib_id IN (select att_artifact from [rc_repository_attachments] where att_itemid = c.att_itemid)
+		for XML PATH('')), 1, 1, '') as titles
+from [dbo].[rc_repository_attachments] c
+where att_projectid = @ProjectID
+group by att_itemid, att_projectid</value>
+  </data>
+  <data name="customSqlQuery3.Sql" xml:space="preserve">
+    <value>select "vwLatestResponse"."res_id",
+       "vwLatestResponse"."res_projectID",
+       "vwLatestResponse"."res_itemID",
+       "vwLatestResponse"."res_milestoneID",
+       "vwLatestResponse"."res_response",
+       "vwLatestResponse"."res_assessment",
+       "vwLatestResponse"."res_date"
+  from "dbo"."vwLatestResponse" "vwLatestResponse" 
+  where  "vwLatestResponse"."res_projectID" = @ProjectID AND "vwLatestResponse"."res_milestoneID" = @MilestoneID</value>
+  </data>
+  <data name="customSqlQuery4.Sql" xml:space="preserve">
+    <value>select "View_latestevaluation"."eval_id",
+       "View_latestevaluation"."eval_responseID",
+       "View_latestevaluation"."eval_projectID",
+       "View_latestevaluation"."Reviwer Assessments",
+       "View_latestevaluation"."Comments",
+       "View_latestevaluation"."eval_itemID",
+       "View_latestevaluation"."Reviewer",
+       "View_latestevaluation"."Date"
+  from "dbo"."View_latestevaluation"
+       "View_latestevaluation" where "View_latestevaluation"."eval_projectID" = @ProjectID</value>
+  </data>
+  <data name="sqlDataSource1.ResultSchemaSerializable" xml:space="preserve">
+    <value>PERhdGFTZXQgTmFtZT0ic3FsRGF0YVNvdXJjZTEiPjxWaWV3IE5hbWU9IlF1ZXJ5Ij48RmllbGQgTmFtZT0iQ2hlY2tsaXN0SWQiIFR5cGU9Ikd1aWQiIC8+PEZpZWxkIE5hbWU9IkNoZWNrbGlzdFRpdGxlIiBUeXBlPSJTdHJpbmciIC8+PEZpZWxkIE5hbWU9Ik9iamVjdGl2ZUlkIiBUeXBlPSJHdWlkIiAvPjxGaWVsZCBOYW1lPSJPYmplY3RpdmVOYW1lIiBUeXBlPSJTdHJpbmciIC8+PEZpZWxkIE5hbWU9IkJPIElEIiBUeXBlPSJTdHJpbmciIC8+PEZpZWxkIE5hbWU9IkNyaXRlcmlhSWQiIFR5cGU9Ikd1aWQiIC8+PEZpZWxkIE5hbWU9IkNyaXRlcmlhVGl0bGUiIFR5cGU9IlN0cmluZyIgLz48RmllbGQgTmFtZT0iQ3JpdGVyaWFTb3VyY2UiIFR5cGU9IlN0cmluZyIgLz48RmllbGQgTmFtZT0iTWlsZVN0b25lSUQiIFR5cGU9Ikd1aWQiIC8+PEZpZWxkIE5hbWU9Ik1pbGVTdG9uZU5hbWUiIFR5cGU9IlN0cmluZyIgLz48RmllbGQgTmFtZT0iQ3JpdGVyaWFOYW1lIiBUeXBlPSJTdHJpbmciIC8+PEZpZWxkIE5hbWU9IkNyaXRlcmlhIiBUeXBlPSJTdHJpbmciIC8+PEZpZWxkIE5hbWU9IkNoZWNrbGlzdFR5cGUiIFR5cGU9IlN0cmluZyIgLz48RmllbGQgTmFtZT0iUHJvamVjdElkIiBUeXBlPSJHdWlkIiAvPjxGaWVsZCBOYW1lPSJQcm9qZWN0bmFtZSIgVHlwZT0iU3RyaW5nIiAvPjwvVmlldz48VmlldyBOYW1lPSJRdWVyeV8yIj48RmllbGQgTmFtZT0iYXR0X2l0ZW1pZCIgVHlwZT0iR3VpZCIgLz48RmllbGQgTmFtZT0iYXR0X3Byb2plY3RpZCIgVHlwZT0iR3VpZCIgLz48RmllbGQgTmFtZT0idGl0bGVzIiBUeXBlPSJTdHJpbmciIC8+PC9WaWV3PjxWaWV3IE5hbWU9IlF1ZXJ5XzMiPjxGaWVsZCBOYW1lPSJyZXNfaWQiIFR5cGU9Ikd1aWQiIC8+PEZpZWxkIE5hbWU9InJlc19wcm9qZWN0SUQiIFR5cGU9Ikd1aWQiIC8+PEZpZWxkIE5hbWU9InJlc19pdGVtSUQiIFR5cGU9Ikd1aWQiIC8+PEZpZWxkIE5hbWU9InJlc19taWxlc3RvbmVJRCIgVHlwZT0iR3VpZCIgLz48RmllbGQgTmFtZT0icmVzX3Jlc3BvbnNlIiBUeXBlPSJTdHJpbmciIC8+PEZpZWxkIE5hbWU9InJlc19hc3Nlc3NtZW50IiBUeXBlPSJTdHJpbmciIC8+PEZpZWxkIE5hbWU9InJlc19kYXRlIiBUeXBlPSJEYXRlVGltZSIgLz48L1ZpZXc+PFZpZXcgTmFtZT0iUXVlcnlfMSI+PEZpZWxkIE5hbWU9ImV2YWxfaWQiIFR5cGU9Ikd1aWQiIC8+PEZpZWxkIE5hbWU9ImV2YWxfcmVzcG9uc2VJRCIgVHlwZT0iR3VpZCIgLz48RmllbGQgTmFtZT0iZXZhbF9wcm9qZWN0SUQiIFR5cGU9Ikd1aWQiIC8+PEZpZWxkIE5hbWU9IlJldml3ZXIgQXNzZXNzbWVudHMiIFR5cGU9IlN0cmluZyIgLz48RmllbGQgTmFtZT0iQ29tbWVudHMiIFR5cGU9IlN0cmluZyIgLz48RmllbGQgTmFtZT0iZXZhbF9pdGVtSUQiIFR5cGU9Ikd1aWQiIC8+PEZpZWxkIE5hbWU9IlJldmlld2VyIiBUeXBlPSJTdHJpbmciIC8+PEZpZWxkIE5hbWU9IkRhdGUiIFR5cGU9IkRhdGVUaW1lIiAvPjwvVmlldz48UmVsYXRpb24gTWFzdGVyPSJRdWVyeSIgRGV0YWlsPSJRdWVyeV8zIj48S2V5Q29sdW1uIE1hc3Rlcj0iQ3JpdGVyaWFJZCIgRGV0YWlsPSJyZXNfaXRlbUlEIiAvPjwvUmVsYXRpb24+PFJlbGF0aW9uIE1hc3Rlcj0iUXVlcnkiIERldGFpbD0iUXVlcnlfMiI+PEtleUNvbHVtbiBNYXN0ZXI9IkNyaXRlcmlhSWQiIERldGFpbD0iYXR0X2l0ZW1pZCIgLz48L1JlbGF0aW9uPjxSZWxhdGlvbiBNYXN0ZXI9IlF1ZXJ5XzMiIERldGFpbD0iUXVlcnlfMSI+PEtleUNvbHVtbiBNYXN0ZXI9InJlc19pZCIgRGV0YWlsPSJldmFsX3Jlc3BvbnNlSUQiIC8+PEtleUNvbHVtbiBNYXN0ZXI9InJlc19pdGVtSUQiIERldGFpbD0iZXZhbF9pdGVtSUQiIC8+PC9SZWxhdGlvbj48L0RhdGFTZXQ+</value>
+  </data>
+  <data name="xrRichText1.SerializableRtfString" xml:space="preserve">
+    <value>ewBcAHIAdABmADEAXABkAGUAZgBmADAAewBcAGYAbwBuAHQAdABiAGwAewBcAGYAMAAgAEMAYQBsAGkAYgByAGkAOwB9AHsAXABmADEAIABUAGkAbQBlAHMAIABOAGUAdwAgAFIAbwBtAGEAbgA7AH0AewBcAGYAMgAgAFMAZQBnAG8AZQAgAFUASQA7AH0AfQB7AFwAYwBvAGwAbwByAHQAYgBsACAAOwBcAHIAZQBkADAAXABnAHIAZQBlAG4AMABcAGIAbAB1AGUAMAAgADsAXAByAGUAZAAwAFwAZwByAGUAZQBuADAAXABiAGwAdQBlADIANQA1ACAAOwB9AHsAXAAqAFwAZABlAGYAYwBoAHAAIABcAGYAMQBcAGYAcwAyADQAfQB7AFwAcwB0AHkAbABlAHMAaABlAGUAdAAgAHsAXABxAGwAXABmADEAXABmAHMAMgA0ACAATgBvAHIAbQBhAGwAOwB9AHsAXAAqAFwAYwBzADEAXABmADEAXABmAHMAMgA0AFwAYwBmADEAIABEAGUAZgBhAHUAbAB0ACAAUABhAHIAYQBnAHIAYQBwAGgAIABGAG8AbgB0ADsAfQB7AFwAKgBcAGMAcwAyAFwAcwBiAGEAcwBlAGQAbwBuADEAXABmADEAXABmAHMAMgA0AFwAYwBmADEAIABMAGkAbgBlACAATgB1AG0AYgBlAHIAOwB9AHsAXAAqAFwAYwBzADMAXAB1AGwAXABmADEAXABmAHMAMgA0AFwAYwBmADIAIABIAHkAcABlAHIAbABpAG4AawA7AH0AewBcACoAXAB0AHMANABcAHQAcwByAG8AdwBkAFwAZgAxAFwAZgBzADIANABcAHEAbABcAHQAcwBjAGUAbABsAHAAYQBkAGQAZgBsADMAXAB0AHMAYwBlAGwAbABwAGEAZABkAGwAMQAwADgAXAB0AHMAYwBlAGwAbABwAGEAZABkAGYAYgAzAFwAdABzAGMAZQBsAGwAcABhAGQAZABmAHIAMwBcAHQAcwBjAGUAbABsAHAAYQBkAGQAcgAxADAAOABcAHQAcwBjAGUAbABsAHAAYQBkAGQAZgB0ADMAXAB0AHMAdgBlAHIAdABhAGwAdABcAGMAbAB0AHgAbAByAHQAYgAgAE4AbwByAG0AYQBsACAAVABhAGIAbABlADsAfQB7AFwAKgBcAHQAcwA1AFwAdABzAHIAbwB3AGQAXABzAGIAYQBzAGUAZABvAG4ANABcAGYAMQBcAGYAcwAyADQAXABxAGwAXAB0AHIAYgByAGQAcgB0AFwAYgByAGQAcgBzAFwAYgByAGQAcgB3ADEAMABcAHQAcgBiAHIAZAByAGwAXABiAHIAZAByAHMAXABiAHIAZAByAHcAMQAwAFwAdAByAGIAcgBkAHIAYgBcAGIAcgBkAHIAcwBcAGIAcgBkAHIAdwAxADAAXAB0AHIAYgByAGQAcgByAFwAYgByAGQAcgBzAFwAYgByAGQAcgB3ADEAMABcAHQAcgBiAHIAZAByAGgAXABiAHIAZAByAHMAXABiAHIAZAByAHcAMQAwAFwAdAByAGIAcgBkAHIAdgBcAGIAcgBkAHIAcwBcAGIAcgBkAHIAdwAxADAAXAB0AHMAYwBlAGwAbABwAGEAZABkAGYAbAAzAFwAdABzAGMAZQBsAGwAcABhAGQAZABsADEAMAA4AFwAdABzAGMAZQBsAGwAcABhAGQAZABmAHIAMwBcAHQAcwBjAGUAbABsAHAAYQBkAGQAcgAxADAAOABcAHQAcwB2AGUAcgB0AGEAbAB0AFwAYwBsAHQAeABsAHIAdABiACAAVABhAGIAbABlACAAUwBpAG0AcABsAGUAIAAxADsAfQB9AHsAXAAqAFwAbABpAHMAdABvAHYAZQByAHIAaQBkAGUAdABhAGIAbABlAH0AXABuAG8AdQBpAGMAbwBtAHAAYQB0AFwAcwBwAGwAeQB0AHcAbgBpAG4AZQBcAGgAdABtAGEAdQB0AHMAcABcAHAAYQByAGQAXABwAGwAYQBpAG4AXABxAGwAewBcAGwAYQBuAGcAMQAwADMAMwBcAGwAYQBuAGcAZgBlADEAMAAzADMAXABmADIAXABmAHMAMgAwAFwAYwBmADEAIABbAFEAdQBlAHIAeQBRAHUAZQByAHkAXwAzAC4AcgBlAHMAXwByAGUAcwBwAG8AbgBzAGUAXQB9AHsAXABsAGEAbgBnADEAMAAzADMAXABsAGEAbgBnAGYAZQAxADAAMwAzAFwAZgAyAFwAZgBzADIAMABcAGMAZgAxACAAIAB9AFwAbABhAG4AZwAxADAAMwAzAFwAbABhAG4AZwBmAGUAMQAwADMAMwBcAGYAMgBcAGYAcwAyADAAXABjAGYAMQBcAHAAYQByAFwAcABhAHIAZABcAHAAbABhAGkAbgBcAHEAbAB7AFwAbABhAG4AZwAxADAAMwAzAFwAbABhAG4AZwBmAGUAMQAwADMAMwBcAGYAMgBcAGYAcwAyADAAXABjAGYAMQAgAFsAUQB1AGUAcgB5AFEAdQBlAHIAeQBfADIALgB0AGkAdABsAGUAcwBdAH0AXABsAGEAbgBnADEAMAAzADMAXABsAGEAbgBnAGYAZQAxADAAMwAzAFwAZgAxAFwAZgBzADIANABcAGMAZgAxAFwAcABhAHIAfQA=</value>
+  </data>
+</root>

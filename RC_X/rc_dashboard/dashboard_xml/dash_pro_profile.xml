@@ -1,0 +1,274 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Dashboard CurrencyCulture="en-US">
+  <Title Text="Business Process Profile" IncludeMasterFilterState="false" Url="https://rcxbox.readycert.net/Content/Images/logo.png" />
+  <DataSources>
+    <SqlDataSource ComponentName="dashboardSqlDataSource1">
+      <Name>SQL Data Source 1</Name>
+      <Connection Name="OhioDB" FromAppConfig="true" />
+      <Query Type="CustomSqlQuery" Name="modified_felipe">
+        <Parameter Name="projectID" Type="DevExpress.DataAccess.Expression">(System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089)([Parameters.projectID])</Parameter>
+        <Sql>SELECT DISTINCT 
+                         TOP (100) PERCENT rc_scorecards_scores.score_col1, rc_scorecards_scores.score_col2, rc_scorecards_scores.score_col3, rc_scorecards_scores.score_col4, rc_scorecards_scores.score_col5, 
+                         rc_scorecards_standards.stan_standard, rc_scorecards_standards.stan_capabilityquality, rc_assessment_areas.area_name, rc_assessment_areas.area_identifier, rc_projects.pro_name, rc_projects.pro_color, 
+                         rc_scorecards.card_name, rc_assessment_categories.cat_name, rc_assessment_processes.bp_id, rc_assessment_processes.bp_name, rc_assessment_categories.cat_id, rc_assessment_areas.area_id, 
+                         rc_assessment_categories.cat_identifier, rc_assessment_processes.bp_identifier, rc_projects.pro_ID, rc_scorecards.card_id, rc_scorecards_standards.stan_id, rc_scorecards_standards.stan_card, 
+                         rc_scorecards_scores.score_colmeasure1, rc_scorecards_scores.score_colmeasure2, rc_scorecards_scores.score_colmeasure3, rc_scorecards_scores.score_colmeasure4, rc_scorecards_scores.score_colmeasure5, 
+                         rc_scorecards.card_desc, rc_scorecards.card_col1, rc_scorecards.card_measure1, rc_scorecards.card_colenabled1, rc_scorecards.card_col2, rc_scorecards.card_measure2, rc_scorecards.card_colenabled2, 
+                         rc_scorecards.card_col3, rc_scorecards.card_measure3, rc_scorecards.card_colenabled5, rc_scorecards.card_measure5, rc_scorecards.card_col5, rc_scorecards.card_colenabled4, rc_scorecards.card_measure4, 
+                         rc_scorecards.card_col4, rc_scorecards.card_colenabled3, rc_scorecards.card_measure, rc_scorecards.card_measure_notes, dbo.rc_scorestandard_values.value_score, dbo.rc_scorestandard_values.value_scoretext, 
+                         dbo.rc_scorestandard_values.value_measures
+FROM            dbo.rc_assessment_categories INNER JOIN
+                         dbo.rc_assessment_areas AS rc_assessment_areas ON rc_assessment_categories.cat_baID = rc_assessment_areas.area_id INNER JOIN
+                         dbo.rc_assessment_processes ON rc_assessment_categories.cat_id = rc_assessment_processes.bp_bcID INNER JOIN
+                         dbo.rc_scorecards_scores AS rc_scorecards_scores INNER JOIN
+                         dbo.rc_scorecards_standards AS rc_scorecards_standards ON rc_scorecards_standards.stan_id = rc_scorecards_scores.score_standard INNER JOIN
+                         dbo.rc_projects AS rc_projects ON rc_projects.pro_ID = rc_scorecards_scores.score_projectid INNER JOIN
+                         dbo.rc_scorecards AS rc_scorecards ON rc_scorecards.card_id = rc_scorecards_standards.stan_card ON rc_assessment_processes.bp_id = rc_scorecards_scores.score_itemid INNER JOIN
+                         dbo.rc_scorestandard_values ON rc_scorecards_standards.stan_id = dbo.rc_scorestandard_values.value_standard
+WHERE        (rc_scorecards.card_name &lt;&gt; 'Barbara BCM Test')
+ORDER BY rc_projects.pro_name, rc_assessment_areas.area_identifier, rc_assessment_categories.cat_identifier, rc_assessment_processes.bp_identifier, rc_scorecards.card_name, rc_scorecards_standards.stan_standard</Sql>
+      </Query>
+      <ResultSchema>
+        <DataSet Name="SQL Data Source 1">
+          <View Name="modified_felipe">
+            <Field Name="score_col1" Type="Int32" />
+            <Field Name="score_col2" Type="Int32" />
+            <Field Name="score_col3" Type="Int32" />
+            <Field Name="score_col4" Type="Int32" />
+            <Field Name="score_col5" Type="Int32" />
+            <Field Name="stan_standard" Type="String" />
+            <Field Name="stan_capabilityquality" Type="String" />
+            <Field Name="area_name" Type="String" />
+            <Field Name="area_identifier" Type="String" />
+            <Field Name="pro_name" Type="String" />
+            <Field Name="pro_color" Type="String" />
+            <Field Name="card_name" Type="String" />
+            <Field Name="cat_name" Type="String" />
+            <Field Name="bp_id" Type="Guid" />
+            <Field Name="bp_name" Type="String" />
+            <Field Name="cat_id" Type="Guid" />
+            <Field Name="area_id" Type="Guid" />
+            <Field Name="cat_identifier" Type="String" />
+            <Field Name="bp_identifier" Type="String" />
+            <Field Name="pro_ID" Type="Guid" />
+            <Field Name="card_id" Type="Guid" />
+            <Field Name="stan_id" Type="Guid" />
+            <Field Name="stan_card" Type="Guid" />
+            <Field Name="score_colmeasure1" Type="String" />
+            <Field Name="score_colmeasure2" Type="String" />
+            <Field Name="score_colmeasure3" Type="String" />
+            <Field Name="score_colmeasure4" Type="String" />
+            <Field Name="score_colmeasure5" Type="String" />
+            <Field Name="card_desc" Type="String" />
+            <Field Name="card_col1" Type="String" />
+            <Field Name="card_measure1" Type="String" />
+            <Field Name="card_colenabled1" Type="Boolean" />
+            <Field Name="card_col2" Type="String" />
+            <Field Name="card_measure2" Type="String" />
+            <Field Name="card_colenabled2" Type="Boolean" />
+            <Field Name="card_col3" Type="String" />
+            <Field Name="card_measure3" Type="String" />
+            <Field Name="card_colenabled5" Type="Boolean" />
+            <Field Name="card_measure5" Type="String" />
+            <Field Name="card_col5" Type="String" />
+            <Field Name="card_colenabled4" Type="Boolean" />
+            <Field Name="card_measure4" Type="String" />
+            <Field Name="card_col4" Type="String" />
+            <Field Name="card_colenabled3" Type="Boolean" />
+            <Field Name="card_measure" Type="Boolean" />
+            <Field Name="card_measure_notes" Type="String" />
+            <Field Name="value_score" Type="Int32" />
+            <Field Name="value_scoretext" Type="String" />
+            <Field Name="value_measures" Type="String" />
+          </View>
+        </DataSet>
+      </ResultSchema>
+      <ConnectionOptions CloseConnection="true" />
+      <CalculatedFields>
+        <CalculatedField Name="Calculated Field 1" Expression="[score_col2] - [score_col1]" DataType="Auto" DataMember="modified_felipe" />
+      </CalculatedFields>
+    </SqlDataSource>
+  </DataSources>
+  <Parameters>
+    <Parameter Name="projectID" Type="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" Value="00000000-0000-0000-0000-000000000000" Description="Project" Visible="false" />
+  </Parameters>
+  <Items>
+    <TreeView ComponentName="treeViewDashboardItem1" Name="Select Data to Visualize" DataSource="dashboardSqlDataSource1" DataMember="modified_felipe" EnableSearch="true">
+      <DataItems>
+        <Dimension DataMember="value_scoretext" DefaultId="DataItem0" />
+        <Dimension DataMember="stan_standard" DefaultId="DataItem1" />
+        <Measure DataMember="score_col1" SummaryType="Min" DefaultId="DataItem2" />
+        <Measure DataMember="score_col2" SummaryType="Min" DefaultId="DataItem3" />
+        <Dimension DataMember="card_name" DefaultId="DataItem5" />
+        <Dimension DataMember="area_name" DefaultId="DataItem6" />
+        <Dimension DataMember="bp_name" DefaultId="DataItem4" />
+        <Dimension DataMember="value_score" DefaultId="DataItem7" />
+      </DataItems>
+      <HiddenMeasures>
+        <Measure DefaultId="DataItem2" />
+        <Measure DefaultId="DataItem3" />
+      </HiddenMeasures>
+      <FilterDimensions>
+        <Dimension DefaultId="DataItem6" />
+        <Dimension DefaultId="DataItem4" />
+        <Dimension DefaultId="DataItem5" />
+        <Dimension DefaultId="DataItem1" />
+        <Dimension DefaultId="DataItem7" />
+        <Dimension DefaultId="DataItem0" />
+      </FilterDimensions>
+    </TreeView>
+    <Pivot ComponentName="pivotDashboardItem1" Name="Pivot 1" ShowCaption="false" DataSource="dashboardSqlDataSource1" DataMember="modified_felipe">
+      <DataItems>
+        <Measure DataMember="score_col1" Name="As-Is" SummaryType="Min" DefaultId="DataItem0" />
+        <Measure DataMember="score_col2" Name="To-Be" SummaryType="Min" DefaultId="DataItem1" />
+        <Dimension DataMember="card_name" DefaultId="DataItem6" />
+        <Dimension DataMember="card_col1" DefaultId="DataItem2" />
+        <Dimension DataMember="card_col2" DefaultId="DataItem4" />
+        <Dimension DataMember="stan_standard" DefaultId="DataItem7" />
+        <Dimension DataMember="area_name" DefaultId="DataItem3" />
+        <Measure DataMember="Calculated Field 1" Name="Advancement Opportunity" SummaryType="Max" Expression="Max([score_col2]) - Max([score_col1])" DefaultId="DataItem8">
+          <WindowDefinition>
+            <PivotWindowDefinition DefinitionMode="Rows" />
+          </WindowDefinition>
+        </Measure>
+      </DataItems>
+      <FormatRules>
+        <PivotItemFormatRule Name="FormatRule 1" ApplyToRow="true" DataItem="DataItem1">
+          <FormatConditionValue>
+            <AppearanceSettings AppearanceType="Red" />
+            <Value1 Type="System.Int32" Value="1" />
+          </FormatConditionValue>
+          <PivotItemFormatRuleLevel />
+        </PivotItemFormatRule>
+        <PivotItemFormatRule Name="FormatRule 2" ApplyToRow="true" DataItem="DataItem0" ApplyToColumn="true">
+          <FormatConditionValue>
+            <AppearanceSettings AppearanceType="Green" />
+            <Value1 Type="System.Int32" Value="5" />
+          </FormatConditionValue>
+          <PivotItemFormatRuleLevel />
+        </PivotItemFormatRule>
+        <PivotItemFormatRule Name="FormatRule 3" ApplyToRow="true" DataItem="DataItem1" ApplyToColumn="true">
+          <FormatConditionValue>
+            <AppearanceSettings AppearanceType="Green" />
+            <Value1 Type="System.Int32" Value="5" />
+          </FormatConditionValue>
+          <PivotItemFormatRuleLevel />
+        </PivotItemFormatRule>
+        <PivotItemFormatRule Name="FormatRule 4" DataItem="DataItem8" IntersectionLevelMode="AllLevels">
+          <FormatConditionValue Condition="Greater">
+            <IconSettings IconType="IndicatorGreenFlag" />
+            <Value1 Type="System.Int32" Value="0" />
+          </FormatConditionValue>
+          <PivotItemFormatRuleLevel />
+        </PivotItemFormatRule>
+      </FormatRules>
+      <Columns>
+        <Column DefaultId="DataItem2" />
+        <Column DefaultId="DataItem4" />
+      </Columns>
+      <Rows>
+        <Row DefaultId="DataItem3" />
+        <Row DefaultId="DataItem6" />
+        <Row DefaultId="DataItem7" />
+      </Rows>
+      <Values>
+        <Value DefaultId="DataItem0" />
+        <Value DefaultId="DataItem1" />
+        <Value DefaultId="DataItem8" />
+      </Values>
+      <ShowColumnGrandTotals>false</ShowColumnGrandTotals>
+      <ShowRowGrandTotals>false</ShowRowGrandTotals>
+      <ShowColumnTotals>false</ShowColumnTotals>
+      <ShowRowTotals>false</ShowRowTotals>
+    </Pivot>
+    <Pie ComponentName="pieDashboardItem1" Name="As-Is" DataSource="dashboardSqlDataSource1" DataMember="modified_felipe" LabelContentType="ArgumentAndValue" TooltipContentType="ArgumentAndValue">
+      <InteractivityOptions IsDrillDownEnabled="true" />
+      <DataItems>
+        <Dimension DataMember="area_name" SortOrder="Descending" DefaultId="DataItem2" />
+        <Measure DataMember="score_col1" Name="As-Is" SummaryType="Min" DefaultId="DataItem0">
+          <NumericFormat FormatType="General" />
+        </Measure>
+        <Dimension DataMember="bp_name" DefaultId="DataItem3" />
+        <Dimension DataMember="stan_standard" DefaultId="DataItem1" />
+      </DataItems>
+      <SeriesDimensions>
+        <SeriesDimension DefaultId="DataItem2" />
+      </SeriesDimensions>
+      <Arguments>
+        <Argument DefaultId="DataItem3" />
+        <Argument DefaultId="DataItem1" />
+      </Arguments>
+      <Values>
+        <Value DefaultId="DataItem0" />
+      </Values>
+    </Pie>
+    <Pie ComponentName="pieDashboardItem2" Name="To-Be" DataSource="dashboardSqlDataSource1" DataMember="modified_felipe" LabelContentType="ArgumentAndValue">
+      <InteractivityOptions IsDrillDownEnabled="true" />
+      <DataItems>
+        <Measure DataMember="score_col2" Name="To-Be" SummaryType="Min" DefaultId="DataItem0" />
+        <Dimension DataMember="area_name" DefaultId="DataItem1" />
+        <Dimension DataMember="bp_name" DefaultId="DataItem2" />
+        <Dimension DataMember="stan_standard" DefaultId="DataItem3" />
+      </DataItems>
+      <SeriesDimensions>
+        <SeriesDimension DefaultId="DataItem1" />
+      </SeriesDimensions>
+      <Arguments>
+        <Argument DefaultId="DataItem2" />
+        <Argument DefaultId="DataItem3" />
+      </Arguments>
+      <Values>
+        <Value DefaultId="DataItem0" />
+      </Values>
+    </Pie>
+    <Chart ComponentName="chartDashboardItem1" Name="Capability Scores" DataSource="dashboardSqlDataSource1" DataMember="modified_felipe" Rotated="true">
+      <InteractivityOptions IsDrillDownEnabled="true" />
+      <DataItems>
+        <Dimension DataMember="area_name" DefaultId="DataItem0" />
+        <Dimension DataMember="bp_name" DefaultId="DataItem1" />
+        <Dimension DataMember="stan_standard" SortOrder="Descending" DefaultId="DataItem2" />
+        <Measure DataMember="score_col1" Name="As-Is" SummaryType="Min" DefaultId="DataItem3" />
+        <Dimension DataMember="area_identifier" DefaultId="DataItem5" />
+        <Measure DataMember="score_col2" Name="To-Be" SummaryType="Min" DefaultId="DataItem4" />
+      </DataItems>
+      <SeriesDimensions>
+        <SeriesDimension DefaultId="DataItem0" />
+      </SeriesDimensions>
+      <Arguments>
+        <Argument DefaultId="DataItem5" />
+        <Argument DefaultId="DataItem1" />
+        <Argument DefaultId="DataItem2" />
+      </Arguments>
+      <Panes>
+        <Pane Name="Pane 1">
+          <Series>
+            <Simple>
+              <Value DefaultId="DataItem3" />
+              <PointLabelOptions Position="Inside" ShowForZeroValues="true" ContentType="Value" />
+            </Simple>
+            <Simple>
+              <Value DefaultId="DataItem4" />
+              <PointLabelOptions Position="Inside" ShowForZeroValues="true" ContentType="Value" />
+            </Simple>
+          </Series>
+        </Pane>
+      </Panes>
+      <AxisX EnableZooming="true" />
+    </Chart>
+  </Items>
+  <LayoutTree>
+    <LayoutGroup Orientation="Vertical">
+      <LayoutGroup Weight="63.4765625">
+        <LayoutGroup Orientation="Vertical" Weight="42.476697736351532">
+          <LayoutItem DashboardItem="treeViewDashboardItem1" Weight="22.46153846153846" />
+          <LayoutItem DashboardItem="chartDashboardItem1" Weight="77.538461538461533" />
+        </LayoutGroup>
+        <LayoutGroup Orientation="Vertical" Weight="57.523302263648468">
+          <LayoutItem DashboardItem="pieDashboardItem1" Weight="52.769230769230766" />
+          <LayoutItem DashboardItem="pieDashboardItem2" Weight="47.230769230769234" />
+        </LayoutGroup>
+      </LayoutGroup>
+      <LayoutItem DashboardItem="pivotDashboardItem1" Weight="36.5234375" />
+    </LayoutGroup>
+  </LayoutTree>
+</Dashboard>

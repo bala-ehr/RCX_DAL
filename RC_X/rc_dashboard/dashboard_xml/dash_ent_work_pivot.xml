@@ -1,0 +1,121 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Dashboard CurrencyCulture="en-US">
+  <Title Text="Workflow Counts by Project by User" />
+  <DataSources>
+    <SqlDataSource ComponentName="dashboardSqlDataSource1">
+      <Name>SQL Data Source 1</Name>
+      <Connection Name="OhioDB" FromAppConfig="true" />
+      <Query Type="SelectQuery" Name="rc_workflow" Distinct="true">
+        <Tables>
+          <Table Name="rc_workflow" X="30" Y="30" Width="125" Height="248" />
+          <Table Name="rc_assessment_areas" X="450" Y="70" Width="125" Height="191" />
+          <Table Name="AspNetUsers" X="160" Y="360" Width="125" Height="343" />
+          <Table Name="AspNetUsers" Alias="AspNetUsers_1" X="350" Y="360" Width="125" Height="343" />
+          <Table Name="rc_assessment_processes" X="605" Y="30" Width="125" Height="210" />
+          <Table Name="rc_pm" X="590" Y="350" Width="125" Height="305" />
+          <Table Name="rc_rtm_criteria" X="530" Y="550" Width="125" Height="248" />
+          <Table Name="rc_projects" X="760" Y="30" Width="125" Height="362" />
+          <Relation Type="LeftOuter" Parent="rc_workflow" Nested="rc_assessment_areas">
+            <KeyColumn Parent="wf_itemkey" Nested="area_id" />
+          </Relation>
+          <Relation Type="LeftOuter" Parent="rc_workflow" Nested="AspNetUsers_1">
+            <KeyColumn Parent="wf_from" Nested="Id" />
+          </Relation>
+          <Relation Type="LeftOuter" Parent="rc_workflow" Nested="AspNetUsers">
+            <KeyColumn Parent="wf_to" Nested="Id" />
+          </Relation>
+          <Relation Type="LeftOuter" Parent="rc_workflow" Nested="rc_assessment_processes">
+            <KeyColumn Parent="wf_itemkey" Nested="bp_id" />
+          </Relation>
+          <Relation Type="LeftOuter" Parent="rc_workflow" Nested="rc_pm">
+            <KeyColumn Parent="wf_itemkey" Nested="pm_id" />
+          </Relation>
+          <Relation Type="LeftOuter" Parent="rc_workflow" Nested="rc_rtm_criteria">
+            <KeyColumn Parent="wf_itemkey" Nested="src_id" />
+          </Relation>
+          <Relation Type="Inner" Parent="rc_workflow" Nested="rc_projects">
+            <KeyColumn Parent="wf_projectid" Nested="pro_ID" />
+          </Relation>
+        </Tables>
+        <Columns>
+          <Column Table="rc_workflow" Name="wf_itemkey" />
+          <Column Table="rc_assessment_areas" Name="area_id" />
+          <Column Table="rc_assessment_areas" Name="area_name" />
+          <Column Table="rc_assessment_areas" Name="area_identifier" />
+          <Column Table="AspNetUsers" Name="Email" Alias="to_email" />
+          <Column Table="AspNetUsers_1" Name="Email" Alias="from_email" />
+          <Column Table="rc_workflow" Name="wf_status" />
+          <Column Table="rc_assessment_processes" Name="bp_bcID" />
+          <Column Table="rc_assessment_processes" Name="bp_identifier" />
+          <Column Table="rc_workflow" Name="wf_id" />
+          <Column Table="rc_workflow" Name="wf_projectid" />
+          <Column Table="rc_workflow" Name="wf_status_value" />
+          <Column Table="rc_workflow" Name="wf_comments" />
+          <Column Table="rc_workflow" Name="wf_to" />
+          <Column Table="rc_workflow" Name="wf_from" />
+          <Column Table="rc_workflow" Name="wf_duedate" />
+          <Column Table="rc_workflow" Name="wf_statusdate" />
+          <Column Table="rc_pm" Name="pm_title" />
+          <Column Table="rc_rtm_criteria" Name="src_title" />
+          <Column Table="rc_projects" Name="pro_name" />
+        </Columns>
+        <Filter>[rc_workflow.wf_to] In ([AspNetUsers.Id])</Filter>
+        <GroupFilter></GroupFilter>
+      </Query>
+      <ResultSchema>
+        <DataSet Name="SQL Data Source 1">
+          <View Name="rc_workflow">
+            <Field Name="wf_itemkey" Type="Guid" />
+            <Field Name="area_id" Type="Guid" />
+            <Field Name="area_name" Type="String" />
+            <Field Name="area_identifier" Type="String" />
+            <Field Name="to_email" Type="String" />
+            <Field Name="from_email" Type="String" />
+            <Field Name="wf_status" Type="String" />
+            <Field Name="bp_bcID" Type="Guid" />
+            <Field Name="bp_identifier" Type="String" />
+            <Field Name="wf_id" Type="Guid" />
+            <Field Name="wf_projectid" Type="Guid" />
+            <Field Name="wf_status_value" Type="Int32" />
+            <Field Name="wf_comments" Type="String" />
+            <Field Name="wf_to" Type="Guid" />
+            <Field Name="wf_from" Type="Guid" />
+            <Field Name="wf_duedate" Type="DateTime" />
+            <Field Name="wf_statusdate" Type="DateTime" />
+            <Field Name="pm_title" Type="String" />
+            <Field Name="src_title" Type="String" />
+            <Field Name="pro_name" Type="String" />
+          </View>
+        </DataSet>
+      </ResultSchema>
+      <ConnectionOptions CloseConnection="true" />
+    </SqlDataSource>
+  </DataSources>
+  <Items>
+    <Pivot ComponentName="pivotDashboardItem1" Name="Workflow Info Pivot" DataSource="dashboardSqlDataSource1" DataMember="rc_workflow">
+      <DataItems>
+        <Dimension DataMember="pro_name" DefaultId="DataItem1" />
+        <Dimension DataMember="to_email" DefaultId="DataItem0" />
+        <Measure DataMember="wf_itemkey" SummaryType="Count" DefaultId="DataItem2" />
+      </DataItems>
+      <Columns>
+        <Column DefaultId="DataItem0" />
+      </Columns>
+      <Rows>
+        <Row DefaultId="DataItem1" />
+      </Rows>
+      <Values>
+        <Value DefaultId="DataItem2" />
+      </Values>
+      <ShowColumnGrandTotals>false</ShowColumnGrandTotals>
+      <ShowRowGrandTotals>false</ShowRowGrandTotals>
+      <ShowColumnTotals>false</ShowColumnTotals>
+      <ShowRowTotals>false</ShowRowTotals>
+    </Pivot>
+  </Items>
+  <LayoutTree>
+    <LayoutGroup Orientation="Vertical">
+      <LayoutItem DashboardItem="pivotDashboardItem1" Weight="100" />
+    </LayoutGroup>
+  </LayoutTree>
+</Dashboard>

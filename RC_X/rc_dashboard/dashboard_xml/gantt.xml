@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ChartXmlSerializer version="17.2.4.0">
+  <Chart AppearanceNameSerializable="Default" SelectionMode="None" SeriesSelectionMode="Series">
+    <DataContainer BoundSeriesSorting="None">
+      <SeriesSerializable>
+        <Item1 Name="Estimated Finish" ArgumentDataMember="rm_home" ToolTipHintDataMember="rm_title" ValueDataMembersSerializable="rm_startdate;rm_estimatedend" ValueScaleType="DateTime">
+          <View TypeNameSerializable="OverlappedGanttSeriesView" />
+        </Item1>
+        <Item2 Name="Actual End Date" ArgumentDataMember="rm_title" ValueDataMembersSerializable="rm_startdate;rm_cmsreviewdate" ValueScaleType="DateTime">
+          <View TypeNameSerializable="OverlappedGanttSeriesView" />
+        </Item2>
+        <Item3 Name="CMS Review" ArgumentDataMember="rm_title" ValueDataMembersSerializable="rm_startdate;rm_cmsreviewdate" ValueScaleType="DateTime">
+          <View TypeNameSerializable="OverlappedGanttSeriesView" />
+        </Item3>
+      </SeriesSerializable>
+      <SeriesTemplate />
+    </DataContainer>
+    <Diagram PaneLayoutDirection="Horizontal" TypeNameSerializable="GanttDiagram">
+      <AxisX VisibleInPanesSerializable="-1" />
+      <AxisY VisibleInPanesSerializable="-1" />
+    </Diagram>
+  </Chart>
+</ChartXmlSerializer>
